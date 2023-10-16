@@ -6,7 +6,7 @@ function Navegationbar(props) {
   return (
     <>
       <div className="navegationContainer">
-        <Link to="/">
+        <Link to="/home">
           <button className="homeBtn">
             <img src={props.icon1} />
             Inicio
