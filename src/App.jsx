@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import ChekIn from "./Pages/ChekIn";
 import "./App.css";
 
@@ -7,11 +7,9 @@ function App() {
 
   return (
     <>
-     
       <ChekIn></ChekIn>
     </>
-  )
-  return <></>;
+  );
 }
 
 export default App;
