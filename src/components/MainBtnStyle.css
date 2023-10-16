@@ -1,0 +1,9 @@
+.btnMain {
+  background-color: #ff8e0a;
+  border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;    
+  width: 320px;
+  height: 48px;
+
+  gap: 12px;
+}
