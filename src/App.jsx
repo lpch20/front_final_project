@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChekIn from "./Pages/ChekIn";
+import ChekIn from "./pages/ChekIn/ChekIn";
 import "./App.css";
 
 function App() {
