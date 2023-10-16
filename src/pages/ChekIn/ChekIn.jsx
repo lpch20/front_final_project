@@ -1,7 +1,6 @@
-import React from "react";
-
 import "./ChekIn.css";
 import MainButton from "../../components/MainBtn";
+
 export const ChekIn = () => {
   return (
     <>
