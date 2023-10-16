@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import "./Navegationbar.css";
 
 function Navegationbar(props) {
   return (
     <>
       <div className="navegationContainer">
-        <Link to="/home">
+        <Link to="/">
           <button className="homeBtn">
             <img src={props.icon1} />
             Inicio
