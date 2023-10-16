@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
-import Navegationbar from "../components/Navegationbar";
+import Navegationbar from "../../components/Navegationbar";
 import "./Search.css";
-import { topTwenty } from "../../API/topTwenty";
+import { topTwenty } from "../../../API/topTwenty";
 
 function Search() {
   const [songs, setSongs] = useState([]);
@@ -30,7 +30,7 @@ function Search() {
         <div className="searchBarInput">
           <img
             className="imgInputSearchbar"
-            src="../../public/style=outline, state=inactive (1).svg"
+            src="/public/style=outline, state=inactive (1).svg"
           />
           <input
             type="text"
@@ -60,10 +60,10 @@ function Search() {
 
         <div className="homeNavigationbar">
           <Navegationbar
-            icono1="../../public/style=outline, state=inactive.svg"
-            icono2="../../public/vector copy.svg"
-            icono3="../../public/style=outline, state=inactive, add-friend=false.svg"
-            icono4="../../public/style=outline, state=inactive (2).svg"
+            icon1="/public/style=outline, state=inactive.svg"
+            icon2="/public/vector copy.svg"
+            icon3="/public/style=outline, state=inactive, add-friend=false.svg"
+            icon4="/public/style=outline, state=inactive (2).svg"
           />
         </div>
       </div>

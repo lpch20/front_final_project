@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
-import Home from "./pages/home";
-import Search from "./pages/search";
+import Home from "./pages/Home/Home";
+import Search from "./pages/Search/Search";
 
 const router = createBrowserRouter([
   {
