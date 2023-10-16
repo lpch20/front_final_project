@@ -30,7 +30,7 @@ function Search() {
         <div className="searchBarInput">
           <img
             className="imgInputSearchbar"
-            src="/public/style=outline, state=inactive (1).svg"
+            src="/style=outline, state=inactive (1).svg"
           />
           <input
             type="text"
@@ -60,10 +60,10 @@ function Search() {
 
         <div className="homeNavigationbar">
           <Navegationbar
-            icon1="/public/style=outline, state=inactive.svg"
-            icon2="/public/vector copy.svg"
-            icon3="/public/style=outline, state=inactive, add-friend=false.svg"
-            icon4="/public/style=outline, state=inactive (2).svg"
+            icon1="/style=outline, state=inactive.svg"
+            icon2="/vector copy.svg"
+            icon3="/style=outline, state=inactive, add-friend=false.svg"
+            icon4="/style=outline, state=inactive (2).svg"
           />
         </div>
       </div>
