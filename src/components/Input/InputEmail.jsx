@@ -4,7 +4,7 @@ import "./input.css";
 function InputEmail(props) {
  
   return (
-    <div>
+    <div className="paragraphMail">
       <input
         type="email"
       />
