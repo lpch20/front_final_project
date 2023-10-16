@@ -1,0 +1,56 @@
+.searchTitle h1 {
+  margin: 0px 24px;
+  position: absolute;
+  top: 48px;
+  color: #26262e;
+  font-family: Rubik;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+}
+.searchBarInput {
+  position: absolute;
+  top: 98px;
+  display: flex;
+  padding-top: 8px;
+  margin: 0 24px;
+}
+.searchBarInput input {
+  width: 320px;
+  height: 48px;
+  padding-left: 52px;
+  border-radius: 0px 16px;
+  border: 2px solid #bfc0c1;
+}
+.searchBarInput input::placeholder {
+  color: #bfc0c1;
+  font-family: Rubik;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+.searchBarInput .imgInputSearchbar {
+  position: absolute;
+  width: 24px;
+  top: 20px;
+  left: 12px;
+}
+
+.divider {
+  margin: 0px 24px;
+  position: absolute;
+  top: 170px;
+}
+
+.navegationContainer .searchBtn {
+  font-weight: 500;
+  opacity: 1;
+}
+.topTwentyRender {
+  position: absolute;
+  top: 216px;
+  left: 24px;
+  height: 480px;
+  width: 320px;
+  overflow-y: scroll;
+}
