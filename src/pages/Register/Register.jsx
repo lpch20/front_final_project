@@ -1,22 +1,28 @@
 import Header from "../../components/Header/Header";
 import InputEmail from "../../components/Input/InputEmail";
-import './register.css';
+import "./register.css";
 
 function Register() {
   return (
-    <div>
-      <Header title="Crear Cuenta"></Header>
-
+    <div className="registerBody">
       <main>
+        <div className="header">
+          <Header title="Crear Cuenta"></Header>
+        </div>
         <div className="mail">
-          <h2>¿Cuál es tu correo <br />electronico?</h2>
+          <h2>
+            ¿Cuál es tu correo <br />
+            electronico?
+          </h2>
         </div>
 
-        <div>
-            <h4>Correo electrónico</h4>
+        <div className="inputMailType">
+          <label>Correo electrónico</label>
+          <div className="inputMail">
             <form action="">
-                <InputEmail warning="Deberás poder confirmarlo luego."></InputEmail>
+              <InputEmail warning="Deberás poder confirmarlo luego."></InputEmail>
             </form>
+          </div>
         </div>
       </main>
     </div>

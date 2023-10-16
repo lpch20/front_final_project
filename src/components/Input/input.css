@@ -43,5 +43,14 @@ input {
   line-height: 24px;
   letter-spacing: 0.5px;
   text-align: left;
-  border: 2px solid #EA0F0F
+  border: 2px solid #ea0f0f;
+}
+
+.paragraphMail {
+  font-family: Rubik;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
 }
