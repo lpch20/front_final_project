@@ -1,0 +1,11 @@
+.accountCreate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.accountCreateChildTwo{
+    margin: 0 auto;
+}
+
+
