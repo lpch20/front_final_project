@@ -1,25 +1,34 @@
 import "./ChekIn.css";
-import MainButton from "../../components/MainBtn";
+import MainButton from "../../components/Buttons/MainBtn";  
+import CustomBtn from "../../components/Buttons/CustomBtn";
+
+
 
 export const ChekIn = () => {
   return (
     <>
-      <main className="container">
-        <div className="logo">
-          <h1 className="lettersLogo">audn</h1>
-          <br />
-        </div>
-        <div className="mid">
+      <main className="container" >
+        <div className="flexContainer">
+        
+        
+          <img  src="/logo-large.svg" alt="" className="logoImage" />
+          
+        
+        
           <h2 className="lettersMid">Música a medida.</h2>
-        </div>
-        <br />
-        <div className="containter2">
-          <MainButton>Registrarse gratis</MainButton>
-          <MainButton>Continuar Con Google</MainButton>
-          <MainButton>Continuar Con Apple</MainButton>
-        </div>
-        <button className="logIn"></button>
-      </main>
+        </div> 
+        
+ <section className="logInSection">
+          <MainButton text= 'Registrarse Gratis'> </MainButton>
+          <CustomBtn logo ="google-logo.svg" text='Continuar con google'></CustomBtn>
+          <CustomBtn logo ="apple-logo.svg" text='Continuar con Apple'></CustomBtn>
+          
+          
+             
+        <button className="logIn">Iniciar Sesion</button>
+        </section>  
+        
+     </main>
     </>
   );
 };
