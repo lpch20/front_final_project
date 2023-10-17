@@ -1,11 +1,8 @@
 .accountCreate {
-    display: flex;
-    width: 320px;
     height: 40px;
     padding-right: 0px;
     align-items: center;
     flex-shrink: 0;
-    margin: 0 24px;
     margin-top: 24px;
     margin-bottom: 32px;
 }
@@ -20,12 +17,14 @@
   text-align: center;
   text-overflow: ellipsis;
   whitespace: nowrap;
-
-  /* Headings/Heading 5 - 16px/Medium */
   font-family: Rubik;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 150% */
+  line-height: 24px; 
   letter-spacing: 0.5px;
+}
+
+.arrowImg{
+  width: 24px;
 }
