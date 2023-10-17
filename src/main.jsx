@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import ChekIn from "./pages/ChekIn/ChekIn";
+import AccountCreate from "./pages/Register/AccountCreate";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/account-create",
+    element: <AccountCreate></AccountCreate>,
   },
   {
     path: "/login",

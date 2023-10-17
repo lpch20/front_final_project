@@ -20,7 +20,6 @@ function InputUser(props) {
         className={cssClass}
         type="text"
       />
-      <p className="hint">{props.warning}</p>
     </div>
   );
 }
