@@ -4,47 +4,84 @@
   position: absolute;
   top: 176px;
   left: 80px;
-  background-color: #26262E;
+  background-color: #26262e;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*   display: flex;
+  flex-direction: row;
+  align-items: center; */
 }
 
-h1 {
-  font-size: 18px;
-  color: transparent;
-  -webkit-text-stroke: 1px black;
-}
-
-.lettersLogo {
-  background-color: transparent;
+.logoImage {
+  width: 207.639px;
+  height: 72px;
+  flex-shrink: 0;
 }
 
 .container {
-  width: 368;
-  height:792px;
+  width: 368px;
+  height: 792px;
   display: flex;
-  justify-items: center;
-  
+  flex-direction: column;
+  align-items: center;
+  background-image:  linear-gradient(0deg, white 20%, rgba(253, 254, 255, 0.00) 50%, rgba(255, 142, 10, 0.53) 85%,rgba(255, 142, 10, 0.90) 100%),
+    url("/public/Gif_Auden.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 .container2 {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-}
-
-.logIn {
-  display: none;
+  gap: 16px;
+   background: linear-gradient(180deg, rgba(253, 254, 255, 0.00) 0%, #FDFEFF 45.83%, #FDFEFF 100%); 
+  width: 368px;
+  height: 338px;
+  flex-shrink: 0;
 }
 
 .letersMid {
   width: 196px;
   height: 31px;
+  color: var(--medios-tonos-gris-5, #26262E);
+text-align: center;
+font-size: 26px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.794px;
+display: inline-block;
 
 
 }
-.mid  {
-  display: inline-block;
-  background-color:transparent;
+
+
+.flexContainer {
+  width: 368px;
+  height: 792px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+
+.logInSection{
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.logIn{
+  width: 288px;
+  height: 48px;
+  border: none;
+  background-color: transparent;
+  margin-top: 16px;
+  font-size: 16px;
+font-style: normal;
+font-weight: 500;
+  
 }
