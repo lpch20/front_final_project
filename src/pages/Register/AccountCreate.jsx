@@ -5,7 +5,7 @@ import './accountCreate.css'
 
 function AccountCreate() {
   return (
-    <div className="registerBody">
+    <div className="accountCreateContainer">
       <main>
         <div>
           <Header title="Crear Cuenta"></Header>

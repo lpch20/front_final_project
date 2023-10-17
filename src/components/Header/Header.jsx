@@ -5,7 +5,7 @@ function Header(props) {
     <div>
       <div className='accountCreate'>
         <div>
-          <img src="/icon/Vector.svg" alt="" />
+          <img className='arrowImg' src="/icon/Vector.svg" alt="" />
         </div>
         <div className='accountCreateChildTwo'>
           <h3>{props.title}</h3>
