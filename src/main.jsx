@@ -10,6 +10,10 @@ import ChekIn from "./pages/ChekIn/ChekIn";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <ChekIn></ChekIn>,
+  },
+  {
     path: "/register",
     element: <Register></Register>,
   },
@@ -24,10 +28,6 @@ const router = createBrowserRouter([
   {
     path: "/top20",
     element: <Search />,
-  },
-  {
-    path: "/chekin",
-    element: <ChekIn></ChekIn>
   },
 ]);
 
