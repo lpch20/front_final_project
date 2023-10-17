@@ -1,26 +1,28 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 368px;
+  max-width: 1280px;
+}
+
 .searchTitle h1 {
-  margin: 0px 24px;
-  position: absolute;
-  top: 48px;
+  margin: 48px 24px 0px 24px;
   color: #26262e;
-  font-family: Rubik;
   font-size: 26px;
   font-weight: 500;
   line-height: 36px;
   letter-spacing: 0.5px;
 }
 .searchBarInput {
-  position: absolute;
-  top: 98px;
-  display: flex;
-  padding-top: 8px;
-  margin: 0 24px;
+  margin: 14px 24px;
+  position: relative;
 }
 .searchBarInput input {
-  width: 320px;
-  height: 48px;
+  /* width: 320px;
+  height: 48px; */
   padding-left: 52px;
-  border-radius: 0px 16px;
+  /* border-radius: 0px 16px; */
   border: 2px solid #bfc0c1;
 }
 .searchBarInput input::placeholder {
@@ -30,27 +32,35 @@
   letter-spacing: 0.5px;
 }
 .searchBarInput .imgInputSearchbar {
-  position: absolute;
   width: 24px;
-  top: 20px;
+  position: absolute;
+  top: 13px;
   left: 12px;
 }
-
 .divider {
-  margin: 0px 24px;
-  position: absolute;
-  top: 170px;
+  margin: 10px 24px;
 }
-
 .navegationContainer .searchBtn {
   font-weight: 500;
   opacity: 1;
 }
 .topTwentyRender {
-  position: absolute;
-  top: 216px;
-  left: 24px;
+  margin: 0px 24px;
   height: 480px;
-  width: 320px;
+  min-width: 320px;
+  max-width: 670px;
   overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.topTwentyRender img {
+  width: 152px;
+  height: 152px;
+  margin-bottom: 16px;
+}
+.topTwentyRenderSong {
+  width: 152px;
+  height: 204px;
+  text-align: center;
 }

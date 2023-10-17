@@ -11,7 +11,7 @@ import ChekIn from "./pages/ChekIn/ChekIn";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ChekIn></ChekIn>
+    element: <ChekIn></ChekIn>,
   },
   {
     path: "/register",

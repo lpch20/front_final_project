@@ -20,10 +20,17 @@ function Search() {
     getTopTwenty();
   }, []);
 
+  // let results = [];
+  // results = pokeData.filter(
+  //   (n) =>
+  //     n.name.includes(searchFilter) ||
+  //     n.number.toString().includes(searchFilter)
+  // );
+
   return (
     <>
       <div className="searchContainer">
-        <div className="topGradient"></div>
+        {/* <div className="topGradient"></div> */}
         <div className="searchTitle">
           <h1>Buscador</h1>
         </div>
@@ -35,22 +42,22 @@ function Search() {
           <input
             type="text"
             placeholder="Que deseas escuchar?"
-            //   onChange={(e) => {
-            //     props.filterText(e.target.value);
-            //   }}
+            // onChange={(e) => {
+            //   props.filterText(e.target.value);
+            // }}
           />
         </div>
         <div className="divider">
           <p>
-            <span>Top 20s</span>
+            Top 20s
             <hr />
           </p>
         </div>
         {songs.length > 0 ? (
           <div className="topTwentyRender">
             {songs.map((x) => (
-              <div key={x.id}>
-                <img src="" className="topTwImg" />
+              <div className="topTwentyRenderSong" key={x.id}>
+                <img src="/download.jpeg" className="topTwImg" />
                 <p className="topTwName">{x.name}</p>
                 <p className="topTwArtist">{x.artist}</p>
               </div>
@@ -58,7 +65,7 @@ function Search() {
           </div>
         ) : null}
 
-        <div className="homeNavigationbar">
+        <div className="searchNavigationbar">
           <Navegationbar
             icon1="/style=outline, state=inactive.svg"
             icon2="/vector copy.svg"

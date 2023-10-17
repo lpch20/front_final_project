@@ -8,10 +8,12 @@ function Home() {
   return (
     <>
       <div className="homeContainer">
-        <div className="topGradient"></div>
+        {/* <div className="topGradient"></div> */}
         <div className="homeTitle">
-          <h1>Música ya</h1>
           <div>
+            <h1>Música ya</h1>
+          </div>
+          <div className="homeTitleImg">
             <img src="/Vector.svg" />
             <img src="/style=outline, state=active, notification=true.svg" />
           </div>
