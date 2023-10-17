@@ -5,10 +5,12 @@ import "./register.css";
 function Register() {
   return (
     <div className="registerBody">
-      <main>
-        <div className="header">
+      <header>
+        <div>
           <Header title="Crear Cuenta"></Header>
         </div>
+      </header>
+      <main>
         <div className="mail">
           <h2>
             ¿Cuál es tu correo <br />

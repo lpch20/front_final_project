@@ -1,33 +1,41 @@
-import Header from "../../components/Header/Header"
-import InputPassword from "../../components/Input/InputPassword"
-import InputUser from "../../components/Input/InputUser"
-
+import Header from "../../components/Header/Header";
+import InputPassword from "../../components/Input/InputPassword";
+import InputUser from "../../components/Input/InputUser";
 
 function Login() {
- 
-
-
+  const inputPasswordStyles = {
+    position: "absolute",
+    width: "24px",
+    height: "24px",
+    left: "310px",
+    top: "273px",
+  }
+  
   return (
-    <div>
-        <Header title="Crear Cuenta"></Header>
-        <main>
-        <div className="mail">
-          <h2>Ingresa un nomre de <br />usuario y contraseña.</h2>
-        </div>
-
+    <div className="registerBody">
+      <main>
         <div>
-            <label htmlFor="">Nombre de Usuario</label>
-            <form action="">
-                <InputUser></InputUser>
-            </form>
-            <label htmlFor="">Contraseña</label>
-            <form action="">
-                <InputPassword warning="Deberá contener al menos 8 caracteres."></InputPassword>
-            </form>
+          <Header title="Iniciar Sesion"></Header>
         </div>
+        <form action="">
+          <div className="inputMailType">
+            <div className="inputDivMail">
+              <label>Nombre de Usuario o E-mail</label>
+              <div className="inputMail">
+                <InputUser warning="Deberás poder confirmarlo luego."></InputUser>
+              </div>
+            </div>
+            <div>
+              <label>Contraseña:</label>
+              <div className="inputMail">
+                <InputPassword style={inputPasswordStyles}></InputPassword>
+              </div>
+            </div>
+          </div>
+        </form>
       </main>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
