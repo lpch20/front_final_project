@@ -18,11 +18,11 @@ function InputPassword(props) {
 
   return (
     <div>
-      <div>
+      <div className="passwordInputConatiner">
         <input
           value={value}
           onChange={handleChange}
-          className={cssClass}
+          className={`${cssClass} inputStyle`}
           type="password"
         />
         <img className="eyeImage" style={props.style} src="/icon/eye.svg" alt="" />
