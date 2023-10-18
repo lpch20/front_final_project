@@ -5,7 +5,7 @@ function InputEmail(props) {
  
   return (
     <div className="paragraphMail">
-      <input
+      <input className="inputStyle"
         type="email"
       />
       <p className="hint">{props.warning}</p>
