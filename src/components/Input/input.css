@@ -1,10 +1,11 @@
-input {
+.inputStyle {
   height: 48px;
   padding: 0px 16px 0px 16px;
   border-radius: 0px 16px 0px 16px;
   border: 2px;
   border: 2px solid var(--medios-tonos-gris-1, #e4e6e8);
   margin-top: 12px;
+  
 }
 
 .hint {
@@ -60,8 +61,8 @@ input {
   position: absolute;
   width: 24px;
   height: 24px;
-  left: 310px;
-  top: 352px;
+  right: 10px;
+  top: 25px;
 }
 
 .termsAndConditions p {
@@ -74,6 +75,7 @@ input {
   font-weight: 400;
   line-height: 18px; /* 150% */
   letter-spacing: 0.5px;
+  margin-top: 14px;
 }
 
 .termsAndConditions p a {
@@ -100,4 +102,8 @@ input {
   height: 22px;
   border-radius: 0px 8px;
   border: px solid var(--medios-tonos-gris-2, #bfc0c1);
+}
+
+.passwordInputConatiner{
+  position: relative;
 }
