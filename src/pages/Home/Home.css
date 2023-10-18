@@ -3,26 +3,14 @@
   flex-direction: column;
   align-items: center;
   min-width: 368px;
-  max-width: 1280px;
-}
-.topGradient {
-  opacity: 0.25;
-  background: var(
-    --degradado-a-blanco-con-color,
-    linear-gradient(
-      360deg,
-      rgba(253, 254, 255, 0) 25%,
-      rgba(255, 142, 10, 0.53) 75%,
-      rgba(255, 142, 10, 0.9) 100%
-    )
-  );
-  min-height: 160px;
+  height: 100vh;
 }
 .homeTitle {
-  margin: 50px 24px 0px 24px;
+  padding: 50px 24px 0px 24px;
   display: flex;
+  align-items: center;
   min-width: 320px;
-  justify-content: space-between;
+  max-width: 820px;
 }
 .homeTitle h1 {
   color: #26262e;
@@ -34,9 +22,28 @@
 .homeTitleImg {
   display: flex;
   gap: 16px;
+  justify-content: flex-end;
   width: 22px;
   height: 22px;
 }
 .homeOptions {
-  margin: 20px 24px 0px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 0px 24px;
+  height: 100vh;
+}
+.homeNavigationbar {
+  display: flex;
+  justify-content: center;
+  align-self: baseline;
+  background: linear-gradient(
+    180deg,
+    rgba(253, 254, 255, 0) 25%,
+    rgba(255, 142, 10, 0.13) 84.37%,
+    rgba(255, 142, 10, 0.22) 100%
+  );
+}
+.homeNavigationbar .navegationContainer .homeBtn {
+  font-weight: 500;
 }

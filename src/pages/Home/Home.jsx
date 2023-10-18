@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
-import Funcionaloption from "../../components/Funcionaloption";
-import Navegationbar from "../../components/Navegationbar";
+import Funcionaloption from "../../components/Funcionalities/Funcionaloption";
+import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Home.css";
 
 function Home() {
   return (
     <>
       <div className="homeContainer">
-        {/* <div className="topGradient"></div> */}
         <div className="homeTitle">
-          <div>
-            <h1>Música ya</h1>
-          </div>
+          <h1>Música ya</h1>
           <div className="homeTitleImg">
             <img src="/Vector.svg" />
             <img src="/style=outline, state=active, notification=true.svg" />

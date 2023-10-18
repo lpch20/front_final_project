@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
-import Navegationbar from "../../components/Navegationbar";
+import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Search.css";
 import { topTwenty } from "../../../API/topTwenty";
 
@@ -30,7 +30,6 @@ function Search() {
   return (
     <>
       <div className="searchContainer">
-        {/* <div className="topGradient"></div> */}
         <div className="searchTitle">
           <h1>Buscador</h1>
         </div>
