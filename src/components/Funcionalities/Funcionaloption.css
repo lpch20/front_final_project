@@ -1,7 +1,8 @@
 .optionContainer {
   display: flex;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  width: 320px;
+  min-width: 320px;
+  max-width: 820px;
   height: 80px;
   gap: 12px;
   border-radius: 0px 24px;
@@ -9,6 +10,8 @@
 }
 .optionContainer img {
   border-radius: 0px 0px 0px 24px;
+  width: 87px;
+  height: 80px;
 }
 .optionContainer .optionInsideInfo {
   display: flex;

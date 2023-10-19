@@ -1,14 +1,15 @@
 import Header from "../../components/Header/Header";
 import InputPassword from "../../components/Input/InputPassword";
 import InputUser from "../../components/Input/InputUser";
+import MainBtn from "../../components/Buttons/MainBtn";
 
 function Login() {
   const inputPasswordStyles = {
     position: "absolute",
     width: "24px",
     height: "24px",
-    left: "310px",
-    top: "273px",
+    right: "10px",
+    top: "25px",
   }
   
   return (
@@ -30,6 +31,9 @@ function Login() {
               <div className="inputMail">
                 <InputPassword style={inputPasswordStyles}></InputPassword>
               </div>
+            </div>
+            <div>
+              <MainBtn></MainBtn>
             </div>
           </div>
         </form>

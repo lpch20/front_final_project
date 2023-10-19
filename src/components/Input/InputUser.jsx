@@ -17,7 +17,7 @@ function InputUser(props) {
       <input
         value={value}
         onChange={handleChange}
-        className={cssClass}
+        className={`${cssClass} inputStyle`}
         type="text"
       />
     </div>
