@@ -69,76 +69,77 @@ function Search() {
     setSearchTerm(value);
   };
 
+  let content = (
+    <div className="topTwentyRender">
+      <div className="songsTopTwenty">
+        {topSongs.map(({ artist_id, artist, name }) => (
+          <div className="topTwentyRenderSong" key={artist_id + "top20"}>
+            <img src={`/${artist_id}.png`} className="topTwImg" />
+            <p className="topTwName">{name}</p>
+            <p className="topTwArtist">{artist}</p>
+          </div>
+        ))}
+      </div>
+      <Navegationbar
+        icon1="/style=outline, state=inactive.svg"
+        icon2="/vector copy.svg"
+        icon3="/style=outline, state=inactive, add-friend=false.svg"
+        icon4="/style=outline, state=inactive (2).svg"
+      />
+    </div>
+  );
+  if (showSearch) {
+    content = (
+      <div className="searchResultsContainer">
+        {!searchTerm ? (
+          <>
+            {recentSearch?.map(({ artist_id, artist, name }) => (
+              <div className="suggestionItem" key={artist_id + "recent-search"}>
+                <img src={`/${artist_id}.png`} className="topTwImg" />
+                <div>
+                  <p className="topTwName">{name}</p>
+                  <p className="topTwArtist">{artist}</p>
+                </div>
+                <img src="/cross.svg" className="deleteSearchImg" />
+              </div>
+            ))}
+          </>
+        ) : (
+          showSearchResults && (
+            <div className="suggestionList">
+              {suggestions.map(({ artist_id, artist, name }) => (
+                <div
+                  className="suggestionItem"
+                  key={artist_id + "suggestion"}
+                  // onClick={() => handleSuggestionClick(name, artist, artist_id)}
+                >
+                  <img src={`/${artist_id}.png`} className="topTwImg" />
+                  <div>
+                    <p className="topTwName">{name}</p>
+                    <p className="topTwArtist">{artist}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="searchContainer">
         <SearchHeader
           onDiscardSearch={() => setShowSearch(false)}
+          onBlur={() => setSearchResults([])}
           onSearchChange={(e) => searchSong(e)}
           onSearchFocus={() => setShowSearch(true)}
           showSearch={showSearch}
           searchTerm={searchTerm}
           title={headerTitle}
         />
-        {showSearch ? (
-          <div className="searchResultsContainer">
-            {!searchTerm ? (
-              <>
-                {recentSearch?.map(({ artist_id, artist, name }) => (
-                  <div
-                    className="suggestionItem"
-                    key={artist_id + "recent-search"}
-                  >
-                    <img src={`/${artist_id}.png`} className="topTwImg" />
-                    <div>
-                      <p className="topTwName">{name}</p>
-                      <p className="topTwArtist">{artist}</p>
-                    </div>
-                    <img src="/cross.svg" className="deleteSearchImg" />
-                  </div>
-                ))}
-              </>
-            ) : (
-              showSearchResults && (
-                <div className="suggestionList">
-                  {suggestions.map(({ artist_id, artist, name }) => (
-                    <div
-                      className="suggestionItem"
-                      key={artist_id + "suggestion"}
-                      onClick={() =>
-                        handleSuggestionClick(name, artist, artist_id)
-                      }
-                    >
-                      <img src={`/${artist_id}.png`} className="topTwImg" />
-                      <div>
-                        <p className="topTwName">{name}</p>
-                        <p className="topTwArtist">{artist}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )
-            )}
-          </div>
-        ) : (
-          <div className="topTwentyRender">
-            <div className="songsTopTwenty">
-              {topSongs.map(({ artist_id, artist, name }) => (
-                <div className="topTwentyRenderSong" key={artist_id + "top20"}>
-                  <img src={`/${artist_id}.png`} className="topTwImg" />
-                  <p className="topTwName">{name}</p>
-                  <p className="topTwArtist">{artist}</p>
-                </div>
-              ))}
-            </div>
-            <Navegationbar
-              icon1="/style=outline, state=inactive.svg"
-              icon2="/vector copy.svg"
-              icon3="/style=outline, state=inactive, add-friend=false.svg"
-              icon4="/style=outline, state=inactive (2).svg"
-            />
-          </div>
-        )}
+        {content}
       </div>
     </>
   );
