@@ -1,9 +1,9 @@
 import api from "./rule_API";
 
-export const emailValidator = async (email) => {
-  let url = "/emailAdd";
+export const emailAdd = async (emailValue) => {
+  let url = `/verifymail?email=${emailValue}`;
   try {
-    const response = await api.post(url, email);
+    const response = await api.get(url);
     return response.data;
   } catch (error) {
     throw (
