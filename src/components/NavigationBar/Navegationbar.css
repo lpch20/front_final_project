@@ -6,6 +6,9 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
 }
 .navegationContainer button {
   display: flex;
@@ -13,6 +16,7 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
+  font-weight: 500;
   line-height: 18px;
   letter-spacing: 0.5px;
   border: none;
@@ -24,4 +28,7 @@
 }
 .navegationContainer button img {
   height: 24px;
+}
+.navegationContainer button p {
+  opacity: 0.4;
 }
