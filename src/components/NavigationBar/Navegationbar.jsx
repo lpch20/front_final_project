@@ -9,22 +9,22 @@ function Navegationbar(props) {
         <Link to="/home">
           <button className="homeBtn">
             <img src={props.icon1} />
-            Inicio
+            <p>Inicio</p>
           </button>
         </Link>
-        <Link to="/top20">
+        <Link to="/search">
           <button className="searchBtn">
             <img src={props.icon2} />
-            Buscador
+            <p>Buscador</p>
           </button>
         </Link>
         <button className="profileBtn">
           <img src={props.icon3} />
-          Perfil
+          <p>Perfil</p>
         </button>
         <button className="friendsBtn">
           <img src={props.icon4} />
-          Amigos
+          <p>Amigos</p>
         </button>
       </div>
     </>
