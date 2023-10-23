@@ -16,72 +16,64 @@
   width: 207.639px;
   height: 72px;
   flex-shrink: 0;
+  margin-top:176px ;
 }
 
 .container {
-  width: 368px;
-  height: 792px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image:  linear-gradient(0deg, white 20%, rgba(253, 254, 255, 0.00) 50%, rgba(255, 142, 10, 0.53) 85%,rgba(255, 142, 10, 0.90) 100%),
-    url("/public/Gif_Auden.gif");
+  width: 100%;
+  background-image:  linear-gradient(0deg, white, rgba(253, 254, 255, 0.6) 50%, rgba(248, 177, 95, 0.65) 85%,rgba(252, 154, 42, 0.9) 100%), url("/public/Gif_Auden.gif");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:100vw ;
   position: relative;
-}
-.container2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 16px;
-   background: linear-gradient(180deg, rgba(253, 254, 255, 0.00) 0%, #FDFEFF 45.83%, #FDFEFF 100%); 
-  width: 368px;
-  height: 338px;
-  flex-shrink: 0;
+
 }
 
-.letersMid {
+
+.lettersMid {
   width: 196px;
   height: 31px;
-  color: var(--medios-tonos-gris-5, #26262E);
-text-align: center;
-font-size: 26px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -0.794px;
-display: inline-block;
-
-
+  color: #26262E;
+  text-align: center;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.794px;
+  width: 100%;
+  justify-self: stretch;
+  margin-top: 23.67px;
+ 
 }
 
-
 .flexContainer {
-  width: 368px;
-  height: 792px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
+  min-width: 368px;
+  padding: 30px;
+  text-align: center;
+  margin: auto;
 }
 
 
 .logInSection{
-  margin-bottom: 200px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-.logIn{
-  width: 288px;
-  height: 48px;
-  border: none;
-  background-color: transparent;
-  margin-top: 16px;
-  font-size: 16px;
-font-style: normal;
-font-weight: 500;
+  align-items: center;
   
 }
+.logIn{
+  position: relative;
+  bottom: 0;
+  width: 288px;
+  border: none;
+  background-color: transparent;
+  margin-top: 32px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  
+  
+}
+
+.lettersMid {
+  margin-bottom: 15%;
+}
+
