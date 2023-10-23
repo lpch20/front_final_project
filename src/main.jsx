@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import ChekIn from "./pages/ChekIn/ChekIn";
 import AccountCreate from "./pages/Register/AccountCreate";
+import ContextualMusic from "./pages/ContextualMusic/ContextualMusic";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <Search />,
+  },
+  {
+    path: "/ContextualMusic",
+    element: <ContextualMusic/>,
   },
 ]);
 
