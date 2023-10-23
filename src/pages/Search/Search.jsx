@@ -2,76 +2,144 @@ import React, { useState, useEffect } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Search.css";
-import { topTwenty } from "../../../API/topTwenty";
+import { topTwenty, allSongs } from "../../../API/songs_API";
+import SearchHeader from "./components/SearchHeader";
 
 function Search() {
+  const [topSongs, setTopSongs] = useState([]);
   const [songs, setSongs] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [recentSearch, setRecentSearch] = useState([]);
+  const suggestions = searchResults.slice(0, 5);
+  const showSearchResults = searchTerm && searchResults.length > 0;
+  const headerTitle = !showSearch
+    ? "Top 20s"
+    : !searchTerm
+    ? "Busquedas Recientes: "
+    : "Resultados sugeridos";
+
+  useEffect(() => {
+    const storedSearch = JSON.parse(localStorage.getItem("recentSearch"));
+    if (storedSearch) {
+      setRecentSearch(storedSearch);
+      console.log(storedSearch);
+    }
+  }, [showSearch]);
 
   const getTopTwenty = async () => {
     try {
       const result = await topTwenty();
-      setSongs(result);
+      setTopSongs(result);
     } catch (error) {
-      error("Las credenciales no son correctas");
+      error("Error al obtener el top20 mundial");
+    }
+  };
+  const getAllSongs = async () => {
+    try {
+      const allSongsDb = await allSongs();
+      setSongs(allSongsDb);
+    } catch (error) {
+      error("Error al obtener todas las canciones.");
     }
   };
 
   useEffect(() => {
     getTopTwenty();
+    getAllSongs();
   }, []);
 
-  // let results = [];
-  // results = pokeData.filter(
-  //   (n) =>
-  //     n.name.includes(searchFilter) ||
-  //     n.number.toString().includes(searchFilter)
-  // );
+  useEffect(() => {
+    const searchFilter = searchTerm.toLowerCase();
+    if (!searchFilter || songs.length === 0) {
+      return;
+    }
+
+    const results = songs.filter(
+      (n) =>
+        n.name.toLowerCase().includes(searchFilter) ||
+        n.artist.toLowerCase().includes(searchFilter)
+    );
+    setSearchResults(results);
+  }, [searchTerm, songs]);
+
+  const searchSong = (e) => {
+    const { value } = e.target;
+    setSearchTerm(value);
+  };
+
+  let content = (
+    <div className="topTwentyRender">
+      <div className="songsTopTwenty">
+        {topSongs.map(({ artist_id, artist, name }) => (
+          <div className="topTwentyRenderSong" key={artist_id + "top20"}>
+            <img src={`/${artist_id}.png`} className="topTwImg" />
+            <p className="topTwName">{name}</p>
+            <p className="topTwArtist">{artist}</p>
+          </div>
+        ))}
+      </div>
+      <Navegationbar
+        icon1="/style=outline, state=inactive.svg"
+        icon2="/vector copy.svg"
+        icon3="/style=outline, state=inactive, add-friend=false.svg"
+        icon4="/style=outline, state=inactive (2).svg"
+      />
+    </div>
+  );
+  if (showSearch) {
+    content = (
+      <div className="searchResultsContainer">
+        {!searchTerm ? (
+          <>
+            {recentSearch?.map(({ artist_id, artist, name }) => (
+              <div className="suggestionItem" key={artist_id + "recent-search"}>
+                <img src={`/${artist_id}.png`} className="topTwImg" />
+                <div>
+                  <p className="topTwName">{name}</p>
+                  <p className="topTwArtist">{artist}</p>
+                </div>
+                <img src="/cross.svg" className="deleteSearchImg" />
+              </div>
+            ))}
+          </>
+        ) : (
+          showSearchResults && (
+            <div className="suggestionList">
+              {suggestions.map(({ artist_id, artist, name }) => (
+                <div
+                  className="suggestionItem"
+                  key={artist_id + "suggestion"}
+                  // onClick={() => handleSuggestionClick(name, artist, artist_id)}
+                >
+                  <img src={`/${artist_id}.png`} className="topTwImg" />
+                  <div>
+                    <p className="topTwName">{name}</p>
+                    <p className="topTwArtist">{artist}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
 
   return (
     <>
       <div className="searchContainer">
-        <div className="searchTitle">
-          <h1>Buscador</h1>
-        </div>
-        <div className="searchBarInput">
-          <img
-            className="imgInputSearchbar"
-            src="/style=outline, state=inactive (1).svg"
-          />
-          <input
-            type="text"
-            placeholder="Que deseas escuchar?"
-            // onChange={(e) => {
-            //   props.filterText(e.target.value);
-            // }}
-          />
-        </div>
-        <div className="divider">
-          <p>
-            Top 20s
-            <hr />
-          </p>
-        </div>
-        {songs.length > 0 ? (
-          <div className="topTwentyRender">
-            {songs.map((x) => (
-              <div className="topTwentyRenderSong" key={x.id}>
-                <img src="/download.jpeg" className="topTwImg" />
-                <p className="topTwName">{x.name}</p>
-                <p className="topTwArtist">{x.artist}</p>
-              </div>
-            ))}
-          </div>
-        ) : null}
-
-        <div className="searchNavigationbar">
-          <Navegationbar
-            icon1="/style=outline, state=inactive.svg"
-            icon2="/vector copy.svg"
-            icon3="/style=outline, state=inactive, add-friend=false.svg"
-            icon4="/style=outline, state=inactive (2).svg"
-          />
-        </div>
+        <SearchHeader
+          onDiscardSearch={() => setShowSearch(false)}
+          onBlur={() => setSearchResults([])}
+          onSearchChange={(e) => searchSong(e)}
+          onSearchFocus={() => setShowSearch(true)}
+          showSearch={showSearch}
+          searchTerm={searchTerm}
+          title={headerTitle}
+        />
+        {content}
       </div>
     </>
   );
