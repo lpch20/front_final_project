@@ -4,7 +4,9 @@ import "./MainBtnStyle.css";
 export const MainBtn = (props) => {
   return (
     <>
-      <button className="btnMain">{props.text}</button>
+      <button type={props.type} className={`btnMain ${props.className} `}>
+        {props.text}
+      </button>
     </>
   );
 };

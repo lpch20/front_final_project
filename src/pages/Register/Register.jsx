@@ -4,30 +4,40 @@ import InputEmail from "../../components/Input/InputEmail";
 import MainBtn from "../../components/Buttons/MainBtn";
 import "./register.css";
 import { useState } from "react";
-import { emailValidator } from "../../../API/emailValidator";
+import { emailAdd } from "../../../API/rule_MAIL";
 
 function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState(false);
 
-  const handleChangeMail = (e) => {
-    setEmail(e.target.value);
-    if (event.target.value.length === 0) {
+  const handleChangeEmail = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value.trim().length === 0 || !isValidEmail(value)) {
       setErrorEmail(true);
     } else {
       setErrorEmail(false);
     }
   };
 
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   const handleSubmit = async (e) => {
-    e.prevent.default();
-    const emailValue = { email: email };
+    e.preventDefault();
+
+    const emailValue = email;
 
     try {
-      const result = await emailValidator(emailValue);
-      console.log(result);
-      navigate("/account-create", { replace: true });
+      await emailAdd(emailValue);
+      if (errorEmail || email.trim() === "") {
+        alert("Campos Incorrectos");
+      } else {
+        sessionStorage.setItem("mail", email);
+        navigate("/account-create", { replace: true });
+      }
     } catch (error) {
       alert(error);
     }
@@ -44,7 +54,7 @@ function Register() {
         <div className="mail">
           <h2>
             ¿Cuál es tu correo <br />
-            electronico?
+            electrónico?
           </h2>
         </div>
 
@@ -53,14 +63,12 @@ function Register() {
           <div className="inputMail">
             <form onSubmit={handleSubmit}>
               <InputEmail
-                onChange={handleChangeMail}
+                type="email"
+                value={email}
+                onChange={handleChangeEmail}
                 warning="Deberás poder confirmarlo luego."
-              ></InputEmail>
-
-              {errorEmail && (
-                <p style={{ color: "red" }}>Este campo es obligatorio</p>
-              )}
-              <MainBtn></MainBtn>
+              />
+              <MainBtn type="submit" text="Enviar" />
             </form>
           </div>
         </div>

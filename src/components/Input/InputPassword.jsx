@@ -3,7 +3,8 @@ import { useState } from "react";
 
 function InputPassword(props) {
   const [value, setValue] = useState("");
-  const [cssClass, setCssClass] = useState("active");
+  const [cssClass, setCssClass] = useState("inactive");
+  const [typeText, setTypeText] = useState("password");
 
   const handleChange = (e) => {
     const newValue = e.target.value;
@@ -14,20 +15,54 @@ function InputPassword(props) {
     } else {
       setCssClass("inactive");
     }
+
+    if (props.onChange) {
+      props.onChange(e);
+    }
+  };
+
+  const handleType = (e) => {
+    setTypeText(typeText === "password" ? "text" : "password");
+
+    if (props.onClick) {
+      props.onClick(e);
+    }
   };
 
   return (
     <div>
       <div className="passwordInputConatiner">
         <input
-          value={value}
+          value={props.value || value}
           onChange={handleChange}
           className={`${cssClass} inputStyle`}
-          type="password"
+          type={typeText}
         />
-        <img className="eyeImage" style={props.style} src="/icon/eye.svg" alt="" />
+        {typeText === "password" ? (
+          <img
+            onClick={handleType}
+            className="eyeImage"
+            style={props.style}
+            src="/icon/eye.svg"
+            alt=""
+          />
+        ) : (
+          <img
+            onClick={handleType}
+            className="eyeImage"
+            style={props.style}
+            src="/icon/eye_text.svg"
+            alt=""
+          />
+        )}
       </div>
-      <p className="hint">{props.warning}</p>
+      {cssClass === "error" ? (
+        <p style={{ color: "red" }} className="hint">
+          {props.warning}
+        </p>
+      ) : (
+        <p className="hint">{props.warning}</p>
+      )}
     </div>
   );
 }
