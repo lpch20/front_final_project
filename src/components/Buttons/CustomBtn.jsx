@@ -2,14 +2,15 @@ import React from 'react'
 import "./CustomBtnStyle.css";
 
 export const CustomBtn = (props) => {
-  return (
-    <>
-    <button  className='customBtnStyle'   ><img className='logoS' src={props.logo} alt="logo image" /> {props.text}</button>
-    
-     </>
-  )
+    const styles = props.logo ? { "backgroundImage": 'url(' + props.logo + ')' } : false
 
-
+    return (
+        <>
+        <a style={styles} className="customBtnStyle">
+            <span>{props.text}</span>
+        </a>
+        </>
+    )
 }
 
 export default CustomBtn
