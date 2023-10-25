@@ -85,7 +85,8 @@ function Search() {
     setSearchTerm(value);
   };
 
-  let content = (
+  let content1;
+  let content = () => (
     <div className="topTwentyRender">
       <div className="songsTopTwenty">
         {topSongs.map(({ artist_id, artist, name, song_id }) => (
@@ -105,7 +106,7 @@ function Search() {
     </div>
   );
   if (showSearch) {
-    content = (
+    content1 = () => (
       <div className="searchResultsContainer">
         {!searchTerm ? (
           <>
@@ -122,10 +123,10 @@ function Search() {
           </>
         ) : (
           showSearchResults && (
-            <div className="suggestionList">
+            <div className="recentSearchList">
               {suggestions.map((suggestion) => (
                 <button
-                  className="suggestionItem"
+                  className="recentSearchSuggestion"
                   key={suggestion.song_id + "suggestion"}
                   onClick={() => {
                     saveRecentSearch(suggestion);
@@ -153,14 +154,14 @@ function Search() {
       <div className="searchContainer">
         <SearchHeader
           onDiscardSearch={() => setShowSearch(false)}
-          // onBlur={(e) => setSearchResults([])}
           onSearchChange={(e) => searchSong(e)}
           onSearchFocus={() => setShowSearch(true)}
           showSearch={showSearch}
           searchTerm={searchTerm}
           title={headerTitle}
         />
-        {content}
+        {showSearch && content1()}
+        {!showSearch && content()}
       </div>
     </>
   );
