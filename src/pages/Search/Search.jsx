@@ -21,12 +21,28 @@ function Search() {
     : "Resultados sugeridos";
 
   useEffect(() => {
-    const storedSearch = JSON.parse(localStorage.getItem("recentSearch"));
+    const storedSearch = JSON.parse(localStorage.getItem("recentSearch")); //recentSearch es identificador
     if (storedSearch) {
       setRecentSearch(storedSearch);
       console.log(storedSearch);
     }
   }, [showSearch]);
+
+  const saveRecentSearchToLocalStorage = (searchData) => {
+    localStorage.setItem("recentSearch", JSON.stringify(searchData));
+    console.log(searchData);
+  };
+
+  const saveRecentSearch = (suggestion) => {
+    console.log(suggestion);
+    console.log(recentSearch);
+    if (recentSearch.length <= 4) {
+      setRecentSearch([...recentSearch, suggestion]);
+    } else {
+      setRecentSearch([...recentSearch.slice(1, 5), suggestion]); // que pasa si hay alguno repetido
+    }
+    saveRecentSearchToLocalStorage(recentSearch);
+  };
 
   const getTopTwenty = async () => {
     try {
@@ -72,8 +88,8 @@ function Search() {
   let content = (
     <div className="topTwentyRender">
       <div className="songsTopTwenty">
-        {topSongs.map(({ artist_id, artist, name }) => (
-          <div className="topTwentyRenderSong" key={artist_id + "top20"}>
+        {topSongs.map(({ artist_id, artist, name, song_id }) => (
+          <div className="topTwentyRenderSong" key={song_id + "top20"}>
             <img src={`/${artist_id}.png`} className="topTwImg" />
             <p className="topTwName">{name}</p>
             <p className="topTwArtist">{artist}</p>
@@ -93,8 +109,8 @@ function Search() {
       <div className="searchResultsContainer">
         {!searchTerm ? (
           <>
-            {recentSearch?.map(({ artist_id, artist, name }) => (
-              <div className="suggestionItem" key={artist_id + "recent-search"}>
+            {recentSearch?.map(({ artist_id, artist, name, song_id }) => (
+              <div className="suggestionItem" key={song_id + "recent-search"}>
                 <img src={`/${artist_id}.png`} className="topTwImg" />
                 <div>
                   <p className="topTwName">{name}</p>
@@ -107,18 +123,23 @@ function Search() {
         ) : (
           showSearchResults && (
             <div className="suggestionList">
-              {suggestions.map(({ artist_id, artist, name }) => (
-                <div
+              {suggestions.map((suggestion) => (
+                <button
                   className="suggestionItem"
-                  key={artist_id + "suggestion"}
-                  // onClick={() => handleSuggestionClick(name, artist, artist_id)}
+                  key={suggestion.song_id + "suggestion"}
+                  onClick={() => {
+                    saveRecentSearch(suggestion);
+                  }}
                 >
-                  <img src={`/${artist_id}.png`} className="topTwImg" />
+                  <img
+                    src={`/${suggestion.artist_id}.png`}
+                    className="topTwImg"
+                  />
                   <div>
-                    <p className="topTwName">{name}</p>
-                    <p className="topTwArtist">{artist}</p>
+                    <p className="topTwName">{suggestion.name}</p>
+                    <p className="topTwArtist">{suggestion.artist}</p>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           )
@@ -132,7 +153,7 @@ function Search() {
       <div className="searchContainer">
         <SearchHeader
           onDiscardSearch={() => setShowSearch(false)}
-          onBlur={() => setSearchResults([])}
+          // onBlur={(e) => setSearchResults([])}
           onSearchChange={(e) => searchSong(e)}
           onSearchFocus={() => setShowSearch(true)}
           showSearch={showSearch}
