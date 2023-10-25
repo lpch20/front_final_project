@@ -7,7 +7,7 @@ function SearchHeader({
   onSearchFocus,
   onDiscardSearch,
   title,
-  onBlur,
+  // onBlur,
 }) {
   return (
     <div className="searchHeader">
@@ -21,12 +21,12 @@ function SearchHeader({
           type="text"
           placeholder="Que deseas escuchar?"
           value={searchTerm}
-          onBlur={onBlur}
+          // onBlur={onBlur}
           onFocus={onSearchFocus}
           onChange={onSearchChange}
         />
         <img
-          onClick={onDiscardSearch}
+          onClick={() => onDiscardSearch()}
           className="imgInputGoBack"
           src="/cross.svg"
         />

@@ -89,7 +89,14 @@
   object-fit: cover;
   margin-bottom: 16px;
 }
-.suggestionList {
+.suggestionList,
+.recentSeachList {
+  min-width: 320px;
+  max-width: 820px;
+  overflow-y: auto;
+  flex: 1 1;
+}
+.recentSearchList {
   min-width: 320px;
   max-width: 820px;
   overflow-y: auto;
@@ -102,7 +109,18 @@
   overflow-y: auto;
   flex: 1 1;
 }
-.suggestionItem {
+.recentSearchList .recentSearchSuggestion {
+  display: flex;
+  height: 48px;
+  gap: 8px;
+  padding: 14px 24px;
+  margin-bottom: 8px;
+  background: none;
+  border: none;
+}
+
+.suggestionItem,
+.recentSerach {
   display: flex;
   height: 48px;
   gap: 8px;
@@ -114,6 +132,12 @@
   height: 24px;
 }
 
+.recentSearchSuggestion img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  margin-right: 16px;
+}
 .suggestionItem img {
   width: 48px;
   height: 48px;
