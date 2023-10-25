@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
+
 import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Search.css";
 import { topTwenty, allSongs } from "../../../API/songs_API";

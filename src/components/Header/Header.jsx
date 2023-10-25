@@ -7,9 +7,8 @@ function Header(props) {
     <div>
 
       <div className="accountCreate"> 
-        <img className="arrowImg" src="/icon/Vector.svg" alt="" />
-
-        <div className="accountCreateChildTwo">
+  
+      <div className="accountCreateChildTwo">
           <Link to={-1}>
             <img className="arrowImg" src="/icon/Vector.svg" alt="" />
           </Link>

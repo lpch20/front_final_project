@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Funcionaloption from "../../components/Funcionalities/Funcionaloption";
 import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Home.css";
 
 function Home() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+
+  useEffect(()=>{
+    if(!token){
+      navigate("/login");
+    }
+  },[]);
+
   return (
     <>
       <div className="homeContainer">
