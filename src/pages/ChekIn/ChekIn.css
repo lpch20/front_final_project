@@ -30,8 +30,8 @@
     ),
     url("/public/Gif_Auden.gif");
 
-  width: 368px;
-  height: 792px;
+  /* width: 368px;
+  height: 792px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +92,7 @@
 
 .logIn {
   position: relative;
-  bottom: 0;
+  /* bottom: 0; */
 
   width: 288px;
   border: none;
@@ -106,3 +106,4 @@
 .lettersMid {
   margin-bottom: 15%;
 }
+
