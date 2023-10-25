@@ -6,13 +6,11 @@ function Header(props) {
   return (
     <div>
 
-      <div className="accountCreate"> 
-        <img className="arrowImg" src="/icon/Vector.svg" alt="" />
+      <div className="accountCreate"> <Link to={-1}>
+        <img className="arrowImg" src="/icon/Vector.svg" alt="" /></Link>
 
         <div className="accountCreateChildTwo">
-          <Link to={-1}>
-            <img className="arrowImg" src="/icon/Vector.svg" alt="" />
-          </Link>
+         
           <h3>{props.title}</h3>
         </div>
       </div>
