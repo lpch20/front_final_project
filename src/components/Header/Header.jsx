@@ -5,8 +5,6 @@ import "./header.css";
 function Header(props) {
   return (
     <div>
-
-
       <div className="accountCreate"> 
   
       <div className="accountCreateChildTwo">

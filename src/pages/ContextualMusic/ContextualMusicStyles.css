@@ -12,29 +12,19 @@
   text-align: center;
   gap: 24px;
 }
-.formLayout{
+.formLayout {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
- 
 }
-.formLayout h1{
+.formLayout h1 {
   margin-bottom: 16px;
-  
-
-
 }
-.formLayout select{
-  
+.formLayout select {
   margin-bottom: 24px;
-
-
 }
 .inputMain {
-  
-  
   /* background-image: url("chevron.svg"); */
   background-repeat: no-repeat;
   background-position: 95% center;
@@ -54,7 +44,6 @@
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   text-align: left;
-  
 }
 .backArrow {
   display: flex;
@@ -64,25 +53,40 @@
   flex-shrink: 0;
 }
 
-
-.selectContaiener{
+.selectContaiener {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
-.genderBox{
+.genderBox span {
+  position: relative;
   width: max-content;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   text-align: center;
   background-color: transparent;
   font-size: 16px;
-  border: 2px solid  #26262e;
+  border: 2px solid #26262e;
+}
 
+.checkClass {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  height: 0px;
+  width: 0px;
+  
+}
+
+.genderBox input:checked + span {
+  background: orange;
+}
+
+.containGender{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
