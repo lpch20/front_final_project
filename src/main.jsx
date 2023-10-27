@@ -9,6 +9,7 @@ import Search from "./pages/Search/Search";
 import ChekIn from "./pages/ChekIn/ChekIn";
 import AccountCreate from "./pages/Register/AccountCreate";
 import ContextualMusic from "./pages/ContextualMusic/ContextualMusic";
+import Cos from "./pages/cos";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/ContextualMusic",
     element: <ContextualMusic/>,
+  },
+  {
+    path: "/cos",
+    element: <Cos></Cos>
   },
 ]);
 
