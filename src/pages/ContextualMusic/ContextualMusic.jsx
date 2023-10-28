@@ -64,13 +64,14 @@ const ContextualMusic = () => {
     backgroundColor: "black",
   };
 
-  const toggleGender = (index, e) => {
+  const toggleGender = (index) => {
   
     const newState = [...gender];
     console.log(newState);
     const currentSatus = gender[index].status;
     if (!currentSatus) {
       const activeCount = gender.filter((c) => c.status).length;
+  
       if (activeCount < 3) {
         newState[index].status = !currentSatus;
         inputPasswordStyles;
@@ -79,13 +80,16 @@ const ContextualMusic = () => {
       }
     } else {
       newState[index].status = !currentSatus;
+    
     }
+    const selectedGender = gender.filter((c)=> {
+      return c.status == true
+    }).map(({id_gender})=> id_gender)
+    setIdGender(selectedGender)
     setGender(newState);
-    if(newState){
-      setIdGender(newState)
-    }
   };
 
+  const token  = localStorage.getItem('token')
 
   const handleActivity = (e) => {
     setIdActivity(e.target.value);
@@ -104,16 +108,16 @@ const ContextualMusic = () => {
     e.preventDefault()
 
     const dataToSend = {
-      mood: idMood,
-      weather: idWeather,
-      activity: idActivity,
+      mood: +idMood,
+      weather: +idWeather,
+      activity: +idActivity,
       gender: idGender,
     };
 
     console.log(dataToSend)
 
     try  {
-      await contextualMusic(dataToSend)
+      await contextualMusic(dataToSend, token)
 
     } catch (error) {
       console.log(error)
