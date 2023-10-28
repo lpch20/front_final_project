@@ -41,10 +41,10 @@ export const allGender = async () => {
   }
 };
 
-export const contextualMusic = async (dataToSend) => {
+export const contextualMusic = async (dataToSend, token) => {
   let url = "/contextualPlaylist";
   try {
-    const response = await api.post(url, dataToSend);
+    const response = await api.post(url, dataToSend, {headers:{Authorization: token}});
     return response.data;
   } catch (error) {
     throw (
