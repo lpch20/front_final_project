@@ -4,8 +4,10 @@ import { allSongs } from "../../../API/songs_API";
 import MainBtn from "../../components/Buttons/MainBtn";
 import "./musicalcupido.css";
 import { cupidoMusic } from "../../../API/cupidoMusic_API";
+import { useNavigate } from "react-router-dom";
 
 function MusicalCupido() {
+  const navigate = useNavigate();
   const [songs, setSongs] = useState([]);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [dataToSend, setDataToSend] = useState([]);
@@ -28,17 +30,15 @@ function MusicalCupido() {
   useEffect(() => {
     getAllSongs();
     setbuttonStyle(true);
+  }, []);
 
+  useEffect(() => {
     if (songs.length > 0) {
       const nextIndex = (currentSongIndex + 1) % songs.length;
       const nextImgUrl = `/${songs[nextIndex].artist_id}.png`;
       setNextImg(nextImgUrl);
     }
-
-    // Swal.fire(
-
-    // )
-  }, []);
+  }, [songs, currentSongIndex]);
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -119,13 +119,14 @@ function MusicalCupido() {
     e.preventDefault();
     try {
       await cupidoMusic(dataToSend, token);
+      navigate("/playlistCupido");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <div className="containerCupido">
       <header>
         <Header title="Cupido Musical"></Header>
       </header>
@@ -151,13 +152,14 @@ function MusicalCupido() {
                         <img className="imgSongNext" src={nextImg} alt="" />
                       )}
                     </div>
-                  </div>
-                  <div className="overlay">
-                    <div onClick={handleLikeClickLike} className="like">
-                      <img src="/icon/like.svg" alt="" />
-                    </div>
-                    <div onClick={handleLikeClickDontLike} className="cross">
-                      <img src="/icon/cross.svg" alt="" />
+
+                    <div className="overlay">
+                      <div onClick={handleLikeClickLike} className="like">
+                        <img src="/icon/like.svg" alt="" />
+                      </div>
+                      <div onClick={handleLikeClickDontLike} className="cross">
+                        <img src="/icon/cross.svg" alt="" />
+                      </div>
                     </div>
                   </div>
 
@@ -165,11 +167,11 @@ function MusicalCupido() {
 
                   <div className="containerMatchesActuales">
                     <div className="matchesActuales">
-                      <div>
+                      <div className="matches">
                         <p>Matches actuales:</p>
-                      </div>
-                      <div className="historyImg">
-                        <img src="/icon/history.svg" alt="" />
+                        <div className="historyImg">
+                          <img src="/icon/history.svg" alt="" />
+                        </div>
                       </div>
                     </div>
 

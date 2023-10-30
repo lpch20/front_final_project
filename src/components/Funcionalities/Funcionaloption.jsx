@@ -5,7 +5,7 @@ import "./Funcionaloption.css";
 function Funcionaloption(props) {
   return (
     <>
-      <div className="optionContainer">
+      <div onClick={props.onClick} className="optionContainer">
         <img src={props.image} />
         <div className="optionInsideInfo">
           <h2>{props.title}</h2>

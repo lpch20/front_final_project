@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 .childContainer {
   display: flex;
@@ -11,12 +12,14 @@
   justify-content: center;
   text-align: center;
   gap: 24px;
+  flex: 1 1;
 }
 .formLayout {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1 1;
 }
 .formLayout h1 {
   margin-bottom: 16px;
@@ -69,7 +72,7 @@
   font-size: 16px;
 
   border: 2px solid  #26262e;
-  
+  padding: 8px;
 }
 
  
@@ -86,13 +89,23 @@
 
 .genderBox input:checked + span {
   background: orange;
+  
 }
 
 .containGender{
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 12px;
+  flex: 1 0;
+  margin-bottom: 20px;
+}
+
+.containGender > div{
+  width: auto;
+ 
 }
 
 
@@ -101,4 +114,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.buttonGender{
+  margin-top: auto;
 }
