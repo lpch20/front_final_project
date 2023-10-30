@@ -67,8 +67,13 @@
   text-align: center;
   background-color: transparent;
   font-size: 16px;
-  border: 2px solid #26262e;
+
+  border: 2px solid  #26262e;
+  
 }
+
+ 
+
 
 .checkClass {
   position: absolute;
@@ -89,6 +94,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+
 
 .containerInput{
   display: flex;
