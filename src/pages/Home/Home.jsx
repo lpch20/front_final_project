@@ -14,6 +14,13 @@ function Home() {
     }
   }, []);
 
+  const routerCupido = () =>{
+    navigate("/musicalcupido")
+  }
+  const routerContextual = () =>{
+    navigate("/ContextualMusic")
+  }
+
   return (
     <>
       <div className="homeContainer">
@@ -26,12 +33,14 @@ function Home() {
         </div>
         <div className="homeOptions">
           <Funcionaloption
+            onClick={routerCupido}
             image="/animation-step=6.svg"
             title="Cupido Musical"
             text="Tus artistas favoritos nunca van a dejarte con el corazón roto."
           />
 
           <Funcionaloption
+            onClick={routerContextual}
             image="/animation-step=5.svg"
             title="Música Contextual"
             text="Creamos la playlist perfecta para cualquier situación"

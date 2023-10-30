@@ -1,6 +1,6 @@
 import React from "react";
 import MainButton from "../../components/Buttons/MainBtn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ContextualMusicStyles.css";
 import Header from "../../components/Header/Header";
 import { useState, useEffect } from "react";
@@ -13,6 +13,7 @@ import {
 } from "../../../API/cntxMusic_API";
 
 const ContextualMusic = () => {
+  const navigate = useNavigate();
   const [activity, setActivity] = useState([]);
   const [mood, setMood] = useState([]);
   const [weather, setWeather] = useState([]);
@@ -112,13 +113,17 @@ const ContextualMusic = () => {
       gender: idGender,
     };
 
-    console.log(dataToSend);
+    console.log("Guardando en el LocalStorage:", dataToSend);
+    localStorage.setItem("ContextualMusic", JSON.stringify(dataToSend));
+    console.log("Guardado en el LocalStorage exitosamente.");
 
     try {
       await contextualMusic(dataToSend, token);
+      navigate("/Playlistcontextual")
     } catch (error) {
       console.log(error);
     }
+    
   };
 
   useEffect(() => {
@@ -185,26 +190,26 @@ const ContextualMusic = () => {
             <h1>Selecciona hasta 3 géneros:</h1>
 
             <div className="containGender">
-      
-                {gender.map((n, i) => (
-                  <div  key={n.id_gender}>
-                    <label className="genderBox">
-                      <input
-                        className="checkClass"
-                        onChange={() => toggleGender(i)}
-                        type="checkbox"
-                        name={n.type}
-                        id={n.id_gender}
-                        checked={n.status}
-                        value={n.id_gender}
-                      />
-                      <span>{n.type}</span>
-                    </label>
-                  </div>
-                ))}
-          
+              {gender.map((n, i) => (
+                <div key={n.id_gender}>
+                  <label className="genderBox">
+                    <input
+                      className="checkClass"
+                      onChange={() => toggleGender(i)}
+                      type="checkbox"
+                      name={n.type}
+                      id={n.id_gender}
+                      checked={n.status}
+                      value={n.id_gender}
+                    />
+                    <span>{n.type}</span>
+                  </label>
+                </div>
+              ))}
             </div>
-            <MainButton type="submit" text="Crear Playlist"></MainButton>
+     
+              <MainButton className="buttonGender" type="submit" text="Crear Playlist"></MainButton>
+      
           </form>
         </div>
       </main>
