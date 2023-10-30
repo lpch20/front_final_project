@@ -49,6 +49,9 @@
 .dividerProfile a {
   text-decoration: none;
 }
+.dividerProfile label {
+  width: auto;
+}
 .dividerNewPlaylistDivider {
   padding: 4px 8px;
   border-radius: 0px 8px;
