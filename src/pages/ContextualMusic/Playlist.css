@@ -1,0 +1,100 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.mainContainer h3 {
+  text-align: center;
+}
+
+.coverStyles {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+}
+.coverRaw {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  border-radius: 0px 32.941px 0px 0px;
+}
+
+.coverSection {
+  width: 224px;
+  height: 224px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.logoDiv{
+    display: flex;
+width: 316px;
+align-items: center;
+gap: 8px;
+display: flex;
+flex-direction: row;
+margin-top: 25.5px;
+}
+
+.logoSmall{
+    width: 24px;
+    height: 24.001px;
+    flex-shrink: 0;
+}
+
+.verifiedStyle{
+    width: 24px;
+    height: 24.001px;
+    flex-shrink: 0;
+}
+.shareStyle{
+
+    width: 24px;
+height: 24.001px;
+flex-shrink: 0;
+}
+.vectorStyle{
+    width: 14.667px;
+height: 14.667px;
+gap: 8px;
+}
+.time{
+    text-align: right;
+    font-size: 14px;
+    
+}
+.playButton{
+
+width: 48px;
+height: 48px;
+}
+.shuffle{
+    width: 24px;
+    height: 24px;
+}
+.makeCopy{
+    width: 24px;
+height: 24px;
+
+}
+
+.logoDiv2{
+    display: flex;
+width: 316px;
+display: flex;
+width: 320px;
+align-items: center;
+gap: 16px;
+display: flex;
+flex-direction: row;
+margin-top: 25.5px;
+}
+.copyText{
+    font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; 
+letter-spacing: 0.5px;
+}
