@@ -25,3 +25,14 @@ export const usernameVerify = async (usernameValue) => {
     );
   }
 };
+
+export const usersData = async () => {
+  let url = "/dataUser";
+  try {
+    const result = await api.get(url);
+    console.log(result);
+    return result.data;
+  } catch (error) {
+    throw error.response.data.error;
+  }
+};

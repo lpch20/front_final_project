@@ -10,6 +10,11 @@ function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState(false);
+  const [intoInput, setIntoInput] = useState(false);
+
+  const handleFocus = () => {
+    setIntoInput(true); 
+  };
 
   const handleChangeEmail = (e) => {
     const value = e.target.value;
@@ -63,12 +68,14 @@ function Register() {
           <div className="inputMail">
             <form onSubmit={handleSubmit}>
               <InputEmail
+                className={`inputStyle ${intoInput ? "active" : "inactive"}`}
+                onFocus={handleFocus}
                 type="email"
                 value={email}
                 onChange={handleChangeEmail}
                 warning="Deberás poder confirmarlo luego."
               />
-              <MainBtn type="submit" text="Enviar" />
+              <MainBtn className={'btnEmail'} type="submit" text="Enviar" />
             </form>
           </div>
         </div>

@@ -3,9 +3,10 @@ import InputUser from "../../components/Input/InputUser";
 import InputPassword from "../../components/Input/InputPassword";
 import "./accountCreate.css";
 import MainBtn from "../../components/Buttons/MainBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { userData, usernameVerify } from "../../../API/userData_API";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 function AccountCreate() {
   const navigate = useNavigate();
@@ -15,6 +16,10 @@ function AccountCreate() {
   const [passwordError, setPasswordError] = useState(false);
   const [userInvalid, setUserInvalid] = useState(false);
   const [userMessage, setUserMessage] = useState("");
+  const [buttonStyle, setbuttonStyle] = useState(false);
+  const [check, setCheck] = useState("");
+  const [checkError, setCheckError] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleUser = async (e) => {
     const value = e.target.value;
@@ -34,7 +39,7 @@ function AccountCreate() {
       await usernameVerify(validUser);
 
       setUserInvalid(false);
-      setUserMessage("Usuario disponible.");
+      setUserMessage("El nombre de usuario está disponible.");
     } catch (error) {
       setUserInvalid(true);
       setUserMessage("El usuario ya existe.");
@@ -51,6 +56,17 @@ function AccountCreate() {
     }
   };
 
+  const handleCheck = (e) => {
+    setChecked(!checked);
+    const value = e.target.value;
+    setCheck(value);
+    if (value !== checked) {
+      setCheckError(true);
+    } else {
+      setCheckError(false);
+    }
+  };
+
   const isValidUser = (user) => {
     return /^.{8,}$/.test(user);
   };
@@ -59,6 +75,25 @@ function AccountCreate() {
     return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
   };
 
+  const validationButton = () => {
+    if (
+      userInvalid ||
+      userError ||
+      passwordError ||
+      password.trim() === "" ||
+      !checked
+    ) {
+      setbuttonStyle(true);
+    } else {
+      setbuttonStyle(false);
+    }
+  };
+
+  useEffect(() => {
+    validationButton();
+  }),
+    [];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,11 +101,12 @@ function AccountCreate() {
     const dataToSend = { username: user, password: password, email: email };
 
     if (
-      userInvalid ||
-      userError ||
-      email.trim() === "" ||
-      passwordError ||
-      password.trim() === ""
+      (userInvalid ||
+        userError ||
+        email.trim() === "" ||
+        passwordError ||
+        password.trim() === "") &&
+      checkError
     ) {
       alert("complete correctamente los campos");
     } else {
@@ -78,7 +114,17 @@ function AccountCreate() {
         await userData(dataToSend);
         navigate("/login");
       } catch (error) {
-        alert(error);
+        Swal.fire({
+          title: 'Error',
+          text: error,
+          icon: 'error', 
+          confirmButtonColor: 'orange',
+          confirmButtonText: 'Aceptar',
+          customClass: {
+            title: 'font-small', 
+            text: 'font-small'   
+          },
+        });
       }
     }
   };
@@ -100,30 +146,36 @@ function AccountCreate() {
             <div className="inputDivMail">
               <label>Nombre de Usuario</label>
               <div className="inputMail">
-                {userInvalid === true ? 
-                <InputUser
-                style={ { border: "2px solid #ea0f0f"}}
-                  value={user}
-                  onChange={handleUser}
-                  onBlur={verifyUser}
-                  warning="Deberás poder confirmarlo luego."
-                ></InputUser>
-                  : <InputUser
+                {userInvalid === true ? (
+                  <InputUser
+                    style={{ border: "2px solid #ea0f0f" }}
                     value={user}
                     onChange={handleUser}
                     onBlur={verifyUser}
                     warning="Deberás poder confirmarlo luego."
-                  ></InputUser> }
+                  ></InputUser>
+                ) : (
+                  <InputUser
+                    value={user}
+                    onChange={handleUser}
+                    onBlur={verifyUser}
+                    warning="Deberás poder confirmarlo luego."
+                  ></InputUser>
+                )}
               </div>
               {userMessage && (
-                <p style={{ color: userInvalid ? "red" : "green" }}>
+                <p
+                  style={{ marginTop: "12px" }}
+                  className={userInvalid ? "busy" : "available"}
+                >
                   {userMessage}
                 </p>
               )}
-  
             </div>
             <div>
-              <label>Contraseña</label>
+              <label className={` normalLabel ${passwordError ? "errorLabel" : "normalLabel"}`}>
+                Contraseña
+              </label>
               <div className="inputMail">
                 <InputPassword
                   value={password}
@@ -133,7 +185,13 @@ function AccountCreate() {
               </div>
             </div>
             <div className="termsAndConditions">
-              <input className="inputCheck" type="checkbox" />
+              <input
+                onChange={handleCheck}
+                value={check}
+                className="inputCheck"
+                type="checkbox"
+                checked={checked}
+              />
               <p htmlFor="">
                 He leído y acepto los <a href="">Términos</a> y{" "}
                 <a href="">Condiciones.</a>
@@ -141,8 +199,14 @@ function AccountCreate() {
             </div>
           </div>
 
-          <MainBtn className="" type="submit" text="Continuar" />
-
+          <div className="containerBtn">
+            <MainBtn
+              disabled={buttonStyle}
+              className={!buttonStyle ? "btnMain3" : "disabledBottom2"}
+              type="submit"
+              text="Continuar"
+            />
+          </div>
         </form>
       </main>
     </div>

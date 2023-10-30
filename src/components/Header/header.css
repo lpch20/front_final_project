@@ -10,7 +10,9 @@
 
 .accountCreateChildTwo {
   margin: 0 auto;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .accountCreateChildTwo h3 {
@@ -28,5 +30,10 @@
 }
 
 .arrowImg {
+  width: 24px;
+  margin-right: 0px;
+}
+
+.accountCreateChildTwo a{
   width: 24px;
 }

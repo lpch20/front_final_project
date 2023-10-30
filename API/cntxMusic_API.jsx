@@ -40,3 +40,16 @@ export const allGender = async () => {
     throw error.response.data.error;
   }
 };
+
+export const contextualMusic = async (dataToSend, token) => {
+  let url = "/contextualPlaylist";
+  try {
+    const response = await api.post(url, dataToSend, {headers:{Authorization: token}});
+    return response.data;
+  } catch (error) {
+    throw (
+      error.response.data.error ||
+      "Mail incorrecto, porfavor intente nuevamente"
+    );
+  }
+};

@@ -18,10 +18,12 @@ function Navegationbar(props) {
             <p>Buscador</p>
           </button>
         </Link>
-        <button className="profileBtn">
-          <img src={props.icon3} />
-          <p>Perfil</p>
-        </button>
+        <Link to="/Profile">
+          <button className="profileBtn">
+            <img src={props.icon3} />
+            <p>Perfil</p>
+          </button>
+        </Link>
         <button className="friendsBtn">
           <img src={props.icon4} />
           <p>Amigos</p>

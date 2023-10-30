@@ -9,7 +9,16 @@ import Search from "./pages/Search/Search";
 import ChekIn from "./pages/ChekIn/ChekIn";
 import AccountCreate from "./pages/Register/AccountCreate";
 import ContextualMusic from "./pages/ContextualMusic/ContextualMusic";
+ 
 import ContextualPlaylist from "./pages/ContextualMusic/ContextualPlaylist";
+
+import MusicalCupido from "./pages/MusicalCupido/MusicalCupido";
+import Profile from "./pages/Profile/Profile";
+import Settings from "./pages/Profile/Settings";
+import NewPlaylist from "./pages/Profile/NewPlaylist";
+import EmptyPlaylist from "./pages/Profile/EmptyPlaylist";
+
+
 
 const router = createBrowserRouter([
   {
@@ -38,7 +47,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/ContextualMusic",
-    element: <ContextualMusic/>,
+    element: <ContextualMusic />,
+  },
+  {
+    path: "/Profile",
+    element: <Profile />,
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
+  },
+  {
+    path: "/newPlaylist",
+    element: <NewPlaylist />,
+  },
+  {
+    path: "/emptyPlaylist",
+    element: <EmptyPlaylist />,
+  },
+  {
+    path: "/musicalcupido",
+    element: <MusicalCupido></MusicalCupido>
+
   },
   {
     path: "/Playlist",

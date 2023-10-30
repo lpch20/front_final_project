@@ -6,7 +6,7 @@ export const MainBtn = (props) => {
   return (
     <>
 
-      <button type={props.type} className={`btnMain ${props.className} `}>
+      <button disabled={props.disabled}  type={props.type} className={` ${props.className} btnMain`}>
         {props.text}
       </button>
 
