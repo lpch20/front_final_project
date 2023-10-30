@@ -8,7 +8,6 @@
 .topTwentyRender {
   min-width: 320px;
   max-width: 820px;
-  /* justify-content: center; */
   display: flex;
   overflow: auto;
   flex-wrap: wrap;
