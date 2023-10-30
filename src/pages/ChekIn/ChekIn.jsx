@@ -19,7 +19,7 @@ export const ChekIn = () => {
                 
                
             </div>
-            <Link to={"/account-create"}>
+            <Link to={"/login"}>
                 <button className="logIn">Iniciar Sesion</button></Link>
         </div>
     </main>

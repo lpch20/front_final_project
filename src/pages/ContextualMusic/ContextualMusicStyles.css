@@ -62,7 +62,6 @@
 
 .genderBox span {
   position: relative;
-  width: max-content;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   text-align: center;
@@ -87,6 +86,12 @@
 .containGender{
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.containerInput{
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }

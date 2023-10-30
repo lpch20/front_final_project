@@ -22,7 +22,6 @@ const ContextualMusic = () => {
   const [idGender, setIdGender] = useState([]);
   const [idWeather, setIdWeather] = useState("");
 
-
   const getActivity = async () => {
     try {
       const result = await allActivity();
@@ -65,13 +64,12 @@ const ContextualMusic = () => {
   };
 
   const toggleGender = (index) => {
-  
     const newState = [...gender];
     console.log(newState);
     const currentSatus = gender[index].status;
     if (!currentSatus) {
       const activeCount = gender.filter((c) => c.status).length;
-  
+
       if (activeCount < 3) {
         newState[index].status = !currentSatus;
         inputPasswordStyles;
@@ -80,16 +78,17 @@ const ContextualMusic = () => {
       }
     } else {
       newState[index].status = !currentSatus;
-    
     }
-    const selectedGender = gender.filter((c)=> {
-      return c.status == true
-    }).map(({id_gender})=> id_gender)
-    setIdGender(selectedGender)
+    const selectedGender = gender
+      .filter((c) => {
+        return c.status == true;
+      })
+      .map(({ id_gender }) => id_gender);
+    setIdGender(selectedGender);
     setGender(newState);
   };
 
-  const token  = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   const handleActivity = (e) => {
     setIdActivity(e.target.value);
@@ -103,9 +102,8 @@ const ContextualMusic = () => {
     setIdWeather(e.target.value);
   };
 
-  
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const dataToSend = {
       mood: +idMood,
@@ -114,15 +112,13 @@ const ContextualMusic = () => {
       gender: idGender,
     };
 
-    console.log(dataToSend)
+    console.log(dataToSend);
 
-    try  {
-      await contextualMusic(dataToSend, token)
-
+    try {
+      await contextualMusic(dataToSend, token);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
   };
 
   useEffect(() => {
@@ -142,12 +138,16 @@ const ContextualMusic = () => {
 
           <form onSubmit={handleSubmit} className="formLayout">
             <h1>¿Cúal es la ocasión?</h1>
-            <select onChange={handleActivity} id="opciones" className="inputMain">
+            <select
+              onChange={handleActivity}
+              id="opciones"
+              className="inputMain"
+            >
               <option value="" disabled selected hidden>
                 Actividad
               </option>
               {activity.map((n) => (
-                <option  key={n.id_activity} value={n.id_activity}>
+                <option key={n.id_activity} value={n.id_activity}>
                   {n.type}
                 </option>
               ))}
@@ -164,12 +164,15 @@ const ContextualMusic = () => {
                 <option key={n.id_mood} value={n.id_mood}>
                   {n.type}
                 </option>
-                
               ))}
             </select>
 
             <h1>¿Cómo esta el dia?</h1>
-            <select onChange={handleWeather} id="opciones" className="inputMain">
+            <select
+              onChange={handleWeather}
+              id="opciones"
+              className="inputMain"
+            >
               <option value="" disabled selected hidden>
                 Clima
               </option>
@@ -182,22 +185,24 @@ const ContextualMusic = () => {
             <h1>Selecciona hasta 3 géneros:</h1>
 
             <div className="containGender">
-              {gender.map((n, i) => (
-                <div key={n.id_gender}>
-                  <label className="genderBox">
-                    <input
-                      className="checkClass"
-                      onChange={() => toggleGender(i)}
-                      type="checkbox"
-                      name={n.type}
-                      id={n.id_gender}
-                      checked={n.status}
-                      value={n.id_gender}
-                    />
-                    <span>{n.type}</span>
-                  </label>
-                </div>
-              ))}
+      
+                {gender.map((n, i) => (
+                  <div  key={n.id_gender}>
+                    <label className="genderBox">
+                      <input
+                        className="checkClass"
+                        onChange={() => toggleGender(i)}
+                        type="checkbox"
+                        name={n.type}
+                        id={n.id_gender}
+                        checked={n.status}
+                        value={n.id_gender}
+                      />
+                      <span>{n.type}</span>
+                    </label>
+                  </div>
+                ))}
+          
             </div>
             <MainButton type="submit" text="Crear Playlist"></MainButton>
           </form>

@@ -34,6 +34,10 @@ function MusicalCupido() {
       const nextImgUrl = `/${songs[nextIndex].artist_id}.png`;
       setNextImg(nextImgUrl);
     }
+
+    // Swal.fire(
+
+    // )
   }, []);
 
   const handleTouchStart = (e) => {

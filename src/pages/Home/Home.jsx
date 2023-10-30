@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Funcionaloption from "../../components/Funcionalities/Funcionaloption";
 import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Home.css";
@@ -8,12 +8,11 @@ function Home() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-
-  useEffect(()=>{
-    if(!token){
+  useEffect(() => {
+    if (!token) {
       navigate("/login");
     }
-  },[]);
+  }, []);
 
   return (
     <>
@@ -31,6 +30,7 @@ function Home() {
             title="Cupido Musical"
             text="Tus artistas favoritos nunca van a dejarte con el corazón roto."
           />
+
           <Funcionaloption
             image="/animation-step=5.svg"
             title="Música Contextual"
