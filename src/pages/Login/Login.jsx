@@ -2,13 +2,15 @@ import Header from "../../components/Header/Header";
 import InputPassword from "../../components/Input/InputPassword";
 import InputUser from "../../components/Input/InputUser";
 import MainBtn from "../../components/Buttons/MainBtn";
-import { useState } from "react";
+import "./login.css"
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   emailVerify,
   passwordVerify,
   usernameVerify,
 } from "../../../API/rule_LOGIN";
+import Swal from 'sweetalert2'
 
 function Login() {
   localStorage.clear();
@@ -18,6 +20,8 @@ function Login() {
   const [errorPassword, setErrorPassword] = useState(false);
   const [usernameAndMail, setUsernameAndMail] = useState("");
   const [errorUsernameAndMail, setErrorUsernameAndMail] = useState(false);
+  const [buttonStyle, setbuttonStyle] = useState(false);
+
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -39,6 +43,19 @@ function Login() {
     }
   };
 
+  useEffect(() => {
+    const buttonState = () => {
+      if (errorPassword || errorUsernameAndMail || usernameAndMail.trim() === "" || password.trim() === "") {
+        setbuttonStyle(true);
+      } else {
+        setbuttonStyle(false);
+      }
+    };
+  
+    buttonState();
+  }, [errorPassword, errorUsernameAndMail]);
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const emailOrUserValue = usernameAndMail;
@@ -70,7 +87,17 @@ function Login() {
         navigate("/home");
       }
     } catch (error) {
-      alert(error);
+      Swal.fire({
+        title: 'Error',
+        text: error,
+        icon: 'error', 
+        confirmButtonColor: 'orange',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          title: 'font-small', 
+          text: 'font-small'   
+        },
+      });
     }
   };
 
@@ -111,8 +138,14 @@ function Login() {
                 ></InputPassword>
               </div>
             </div>
-            <div>
-              <MainBtn type="submit"></MainBtn>
+            <div className="containerButton">
+            <MainBtn
+              disabled={buttonStyle}
+              className={!buttonStyle ? "btnMain4" : "disabledBottom4"}
+              type="submit"
+              text="Iniciar Sesión"
+            />
+              <p>¿Olvidaste tu contraseña?</p>
             </div>
           </div>
         </form>

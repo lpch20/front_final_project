@@ -5,6 +5,7 @@ function InputEmail(props) {
     <div className="paragraphMail">
       <input
         className="inputStyle"
+        onFocus={props.onFocus}
         type={props.type}
         value={props.value} // Asocia el valor con la prop 'value'
         onChange={props.onChange} // Asocia el controlador de eventos con la prop 'onChange'

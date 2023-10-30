@@ -2,16 +2,8 @@ import "./input.css";
 import { useState } from "react";
 
 function InputUser(props) {
-  const [value, setValue] = useState("");
-  const [cssClass, setCssClass] = useState("active");
-  const [intoInput, setIntoInput] = useState("inactive");
 
-  // const handleChange = (e) => {
-  //   const newValue = e.target.value;
-  //   setValue(newValue);
-
-  //   //LOGICA CON LA BASE DE DATOS, SI EL USUARIO NO ESTA EN LA BASE DE DATOS, ERROR, SI ESTA EN BASE DE DATOS, GREEN.
-  // };
+  const [intoInput, setIntoInput] = useState(false);
 
   const handleFocus = () => {
     setIntoInput(true); 
@@ -23,7 +15,6 @@ function InputUser(props) {
       props.onBlur(e);
     }
   };
-
 
 
   return (
