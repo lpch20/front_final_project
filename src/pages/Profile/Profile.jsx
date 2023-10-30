@@ -31,7 +31,7 @@ function Profile() {
         profileUsername="Mara Pérez 🦋"
       />
       <div className="dividerProfile">
-        <label htmlFor="">Mis Playlist</label>
+        <label>Mis Playlist</label>
         <hr />
         <Link to="/newPlaylist">
           <button className="dividerNewPlaylistDivider">Crear Playlist</button>
