@@ -47,7 +47,7 @@ function Profile() {
 
       <div className="playlistProfileContainer">
         {users.playlistNames.map((playlistName, index) => (
-          <div key={index} className="coverSection">
+          <div key={index} className="coverSectionProfile">
             <p>{playlistName}</p>
             <img className="coverStyles" src="/public/1.png" alt="" />
           </div>
