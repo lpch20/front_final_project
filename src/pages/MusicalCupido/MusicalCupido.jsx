@@ -5,6 +5,7 @@ import MainBtn from "../../components/Buttons/MainBtn";
 import "./musicalcupido.css";
 import { cupidoMusic } from "../../../API/cupidoMusic_API";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function MusicalCupido() {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function MusicalCupido() {
   const [imgSelected, setImgSelected] = useState(null);
   const [imgView, setImgSView] = useState([]);
   const [nextImg, setNextImg] = useState(null);
+  const [totalContainerHidden, setTotalContainerHidden] = useState(true)
+
 
   const touchStartX = useRef(null);
 
@@ -26,13 +29,26 @@ function MusicalCupido() {
     }
   }, []);
 
+  const handleContainer = () => {
+    setTotalContainerHidden(!totalContainerHidden);
+  };
 
   const getAllSongs = async () => {
     try {
       const allSongsDb = await allSongs();
       setSongs(allSongsDb);
     } catch (error) {
-      console.error("Error al obtener todas las canciones.", error);
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 
@@ -130,84 +146,129 @@ function MusicalCupido() {
       await cupidoMusic(dataToSend, token);
       navigate("/playlistCupido");
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 
   return (
     <div className="containerCupido">
-      <header>
-        <Header title="Cupido Musical"></Header>
-      </header>
 
-      <main>
-        <div
-          className="carouselContainer"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="carouselItem">
-            <form onSubmit={handleSubmit} action="">
-              {songs[currentSongIndex] && (
-                <>
-                  <div className="containerImg">
-                    <img
-                      className="imgSong"
-                      src={`/${songs[currentSongIndex].artist_id}.png`}
-                      alt=""
-                    />
-                    <div className="containerImgNext">
-                      {nextImg && (
-                        <img className="imgSongNext" src={nextImg} alt="" />
-                      )}
-                    </div>
+      <div
+        style={{
+          display: totalContainerHidden ? "flex" : "none",
+        }}
+        className="popUp"
+      >
+        <div className="titlePopUp">
+          <h3>Cupido Musical</h3>
+        </div>
 
-                    <div className="overlay">
-                      <div onClick={handleLikeClickLike} className="like">
-                        <img src="/icon/like.svg" alt="" />
+        <div className="imgPopUp">
+          <img src="/image.svg" alt="" />
+        </div>
+
+        <div className="textPopUp">
+          <p>Luego de al menos 2 me gusta, confirma tu selección y crearemos una playlist rápida con los artistas que fueron un match.</p>
+        </div>
+
+        <div className="containerButtonPopUp">
+          <button onClick={handleContainer} className="buttonOkPopUp">Entendido</button>
+        </div>
+
+        <div className="containerA">
+          <a onClick={handleContainer} className="aNoPopUp">No volver a Mostrar</a>
+        </div>
+
+      </div>
+
+      <div
+        style={{
+          display: totalContainerHidden ? "none" : "block",
+        }}>
+        <header>
+          <Header title="Cupido Musical"></Header>
+        </header>
+
+        <main>
+          <div
+            className="carouselContainer"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="carouselItem">
+
+              <form onSubmit={handleSubmit} action="">
+                {songs[currentSongIndex] && (
+                  <>
+                    <div className="containerImg">
+                      <img
+                        className="imgSong"
+                        src={`/${songs[currentSongIndex].artist_id}.png`}
+                        alt=""
+                      />
+                      <div className="containerImgNext">
+                        {nextImg && (
+                          <img className="imgSongNext" src={nextImg} alt="" />
+                        )}
                       </div>
-                      <div onClick={handleLikeClickDontLike} className="cross">
-                        <img src="/icon/cross.svg" alt="" />
-                      </div>
-                    </div>
-                  </div>
 
-                  <p>{songs[currentSongIndex].name}</p>
-
-                  <div className="containerMatchesActuales">
-                    <div className="matchesActuales">
-                      <div className="matches">
-                        <p>Matches actuales:</p>
-                        <div className="historyImg">
-                          <img src="/icon/history.svg" alt="" />
+                      <div className="overlay">
+                        <div onClick={handleLikeClickLike} className="like">
+                          <img src="/icon/like.svg" alt="" />
+                        </div>
+                        <div onClick={handleLikeClickDontLike} className="cross">
+                          <img src="/icon/cross.svg" alt="" />
                         </div>
                       </div>
                     </div>
 
-                    <div>
-                      {imgView.map((img, index) => (
-                        <img
-                          className="imgSelected"
-                          key={index}
-                          src={img}
-                          alt=""
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </>
-              )}
+                    <p>{songs[currentSongIndex].name}</p>
 
-              <MainBtn
-                text={"Crear Playlist"}
-                className={!buttonStyle ? "btnMain2" : "disbledBottom"}
-                disabled={buttonStyle}
-                type="submit"
-              ></MainBtn>
-            </form>
+                    <div className="containerMatchesActuales">
+                      <div className="matchesActuales">
+                        <div className="matches">
+                          <p>Matches actuales:</p>
+                          <div className="historyImg">
+                            <img src="/icon/history.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        {imgView.map((img, index) => (
+                          <img
+                            className="imgSelected"
+                            key={index}
+                            src={img}
+                            alt=""
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                <MainBtn
+                  text={"Crear Playlist"}
+                  className={!buttonStyle ? "btnMain2" : "disbledBottom"}
+                  disabled={buttonStyle}
+                  type="submit"
+                ></MainBtn>
+              </form>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }

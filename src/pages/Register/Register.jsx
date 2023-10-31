@@ -5,6 +5,7 @@ import MainBtn from "../../components/Buttons/MainBtn";
 import "./register.css";
 import { useState } from "react";
 import { emailAdd } from "../../../API/rule_MAIL";
+import Swal from "sweetalert2";
 
 function Register() {
   const navigate = useNavigate();
@@ -44,7 +45,17 @@ function Register() {
         navigate("/account-create", { replace: true });
       }
     } catch (error) {
-      alert(error);
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 

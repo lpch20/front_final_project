@@ -7,6 +7,8 @@
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.5px;
+  position: fixed;
+  bottom: 20px;
 }
 
 .containerButton {
@@ -19,6 +21,8 @@
 }
 
 .btnMain4 {
+  position: fixed;
+  bottom: 40px;
   margin: 0 auto;
   border: none;
   background-color: #ff8e0a;
@@ -34,6 +38,8 @@
 }
 
 .disabledBottom4 {
+  position: fixed;
+  bottom: 40px;
   border-radius: 0px 16px;
   background: var(--medios-tonos-gris-1, #e4e6e8);
   border-top-right-radius: 15px;

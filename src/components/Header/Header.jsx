@@ -7,7 +7,7 @@ function Header(props) {
       <div className="accountCreate">
         <div className="accountCreateChildTwo">
           <Link to={-1}>
-            <img className="arrowImg" src="/icon/Vector.svg" alt="" />
+            <img className={`"arrowImg" ${props.className}`} src="/icon/Vector.svg" alt="" />
           </Link>
 
           <h3>{props.title}   </h3>

@@ -4,8 +4,11 @@ import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Search.css";
 import { topTwenty, allSongs } from "../../../API/songs_API";
 import SearchHeader from "./components/SearchHeader";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Search() {
+  const navigate = useNavigate()
   const [topSongs, setTopSongs] = useState([]);
   const [songs, setSongs] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -47,7 +50,7 @@ function Search() {
     if (recentSearch.length <= 4) {
       setRecentSearch([...recentSearch, suggestion]);
     } else {
-      setRecentSearch([...recentSearch.slice(1, 5), suggestion]); // que pasa si hay alguno repetido
+      setRecentSearch([...recentSearch.slice(1, 5), suggestion]);
     }
     saveRecentSearchToLocalStorage(recentSearch);
   };
@@ -57,7 +60,17 @@ function Search() {
       const result = await topTwenty();
       setTopSongs(result);
     } catch (error) {
-      error("Error al obtener el top20 mundial");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
   const getAllSongs = async () => {
@@ -65,7 +78,17 @@ function Search() {
       const allSongsDb = await allSongs();
       setSongs(allSongsDb);
     } catch (error) {
-      error("Error al obtener todas las canciones.");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 
@@ -92,6 +115,10 @@ function Search() {
     const { value } = e.target;
     setSearchTerm(value);
   };
+
+  const clearInput = () =>{
+    setSearchTerm("")
+  }
 
   let content1;
   let content = () => (
@@ -161,7 +188,7 @@ function Search() {
     <>
       <div className="searchContainer">
         <SearchHeader
-          onDiscardSearch={() => setShowSearch(false)}
+          onDiscardSearch={() =>{ setShowSearch(false); clearInput()}}
           onSearchChange={(e) => searchSong(e)}
           onSearchFocus={() => setShowSearch(true)}
           showSearch={showSearch}

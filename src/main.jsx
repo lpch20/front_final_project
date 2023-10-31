@@ -9,10 +9,8 @@ import Search from "./pages/Search/Search";
 import ChekIn from "./pages/ChekIn/ChekIn";
 import AccountCreate from "./pages/Register/AccountCreate";
 import ContextualMusic from "./pages/ContextualMusic/ContextualMusic";
- 
 import PlaylistContextual from "./pages/Playlist/PlaylistContextual";
 import PlaylistCupido from "./pages/Playlist/PlaylistCupido";
-
 import MusicalCupido from "./pages/MusicalCupido/MusicalCupido";
 import Profile from "./pages/Profile/Profile";
 import Settings from "./pages/Profile/Settings";

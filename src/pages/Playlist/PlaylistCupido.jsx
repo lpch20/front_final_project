@@ -85,7 +85,7 @@ export const PlaylistCupido= () => {
         </div>
         <div className="containerMap">
           {playlist.map((data) => (
-            <div className="card">
+            <div key={data.id_song} className="card">
               <div className="cardStyle">
                 <div>
                   <img

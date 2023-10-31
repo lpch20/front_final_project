@@ -82,7 +82,7 @@ export const PlaylistContextual = () => {
         </div>
         <div className="containerMap">
           {playlist.map((data) => (
-            <div className="card">
+            <div key={data.artist_id} className="card">
               <div className="cardStyle">
                 <div>
                   <img

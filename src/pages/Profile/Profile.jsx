@@ -3,10 +3,12 @@ import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Profile.css";
 import { getUserPlaylists } from "../../../API/userData_API";
 import HeaderProfile from "./components/HeaderProfile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Profile() {
   const [users, setUsers] = useState({ username: "", playlistNames: [] });
+  const navigate = useNavigate()
 
   const token = localStorage.getItem("token");
 
@@ -21,7 +23,17 @@ function Profile() {
       const userData = await getUserPlaylists(token);
       setUsers(userData);
     } catch (error) {
-      console.error("Error al obtener los datos del usuario.", error);
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 

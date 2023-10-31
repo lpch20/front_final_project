@@ -9,17 +9,18 @@ function InputPassword(props) {
   const handleChange = (e) => {
     const newValue = e.target.value;
     setValue(newValue);
-
-    if (newValue.length < 8) {
+  
+    if (newValue.length < 8 || !/^(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/.test(newValue)) {
       setCssClass("error");
     } else {
       setCssClass("inactive");
     }
-
+  
     if (props.onChange) {
       props.onChange(e);
     }
   };
+  
 
   const handleType = (e) => {
     setTypeText(typeText === "password" ? "text" : "password");
