@@ -6,17 +6,20 @@
   padding: 20px;
 }
 .headerBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 24px;
+  flex-shrink: 0;
+  align-self: stretch;
+  color: var(--medios-tonos-gris-5, #26262E);
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Headings/Heading 5 - 16px/Medium */
   font-family: Rubik;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; 
+  line-height: 24px; /* 150% */
   letter-spacing: 0.5px;
-  margin-bottom: 23px;
 }
 
 
@@ -145,3 +148,35 @@ height: 48px;
   align-items: center;
   align-content: center;
 }
+.songName{
+  height: 18px;
+flex: 1 0 0;
+color: var(--medios-tonos-gris-5, #26262E);
+text-overflow: ellipsis;
+white-space: nowrap;
+font-family: Rubik;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; 
+letter-spacing: 0.5px;
+
+
+}
+.artistName{
+  height: 18px;
+  align-self: stretch;
+  overflow: hidden;
+color: var(--medios-tonos-gris-3, #838486);
+text-overflow: ellipsis;
+white-space: nowrap;
+font-family: Rubik;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; 
+letter-spacing: 0.5px;
+
+
+}
+

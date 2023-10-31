@@ -28,7 +28,6 @@
   margin-bottom: 24px;
 }
 .inputMain {
-  /* background-image: url("chevron.svg"); */
   background-repeat: no-repeat;
   background-position: 95% center;
   border-radius: 0px 16px;
@@ -55,14 +54,12 @@
   align-items: center;
   flex-shrink: 0;
 }
-
 .selectContaiener {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 .genderBox span {
   position: relative;
   border-top-right-radius: 15px;
@@ -70,29 +67,22 @@
   text-align: center;
   background-color: transparent;
   font-size: 16px;
-  
   border: 2px solid  #26262e;
   padding: 8px;
 }
-
- 
-
 
 .checkClass {
   position: absolute;
   top: 0px;
   left: 50%;
   height: 0px;
-  width: 0px;
-  
+  width: 0px; 
 }
-
 .genderBox input:checked + span {
   background: #26262E;
   color: white;
   
 }
-
 .colorType {
   color: black;
 }
@@ -106,20 +96,14 @@
   flex: 1 0;
   margin-bottom: 20px;
 }
-
 .containGender > div{
   width: auto;
- 
 }
-
-
-
 .containerInput{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .buttonGender{
   margin-top: auto;
 }
