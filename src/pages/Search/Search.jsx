@@ -20,6 +20,14 @@ function Search() {
     ? "Busquedas Recientes: "
     : "Resultados sugeridos";
 
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   useEffect(() => {
     const storedSearch = JSON.parse(localStorage.getItem("recentSearch")); //recentSearch es identificador
     if (storedSearch) {

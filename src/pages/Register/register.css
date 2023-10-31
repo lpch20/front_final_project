@@ -73,12 +73,11 @@ body {
 }
 
 .btnEmail {
-  position: relative;
-  top: 250px;
+  position: absolute;
   margin: auto;
-  bottom: 0px;
+  bottom: 20px;
   display: flex;
-  width: 320px;
+  width: 340px;
   padding: 12px 16px;
   justify-content: center;
   align-items: center;

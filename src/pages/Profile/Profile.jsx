@@ -10,6 +10,14 @@ function Profile() {
 
   const token = localStorage.getItem("token");
 
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
+
   const getUsersData = async () => {
     try {
       const userData = await getUserPlaylists(token);

@@ -17,8 +17,6 @@ import MusicalCupido from "./pages/MusicalCupido/MusicalCupido";
 import Profile from "./pages/Profile/Profile";
 import Settings from "./pages/Profile/Settings";
 import NewPlaylist from "./pages/Profile/NewPlaylist";
-import EmptyPlaylist from "./pages/Profile/EmptyPlaylist";
-
 
 
 const router = createBrowserRouter([
@@ -61,10 +59,6 @@ const router = createBrowserRouter([
   {
     path: "/newPlaylist",
     element: <NewPlaylist />,
-  },
-  {
-    path: "/emptyPlaylist",
-    element: <EmptyPlaylist />,
   },
   {
     path: "/musicalcupido",

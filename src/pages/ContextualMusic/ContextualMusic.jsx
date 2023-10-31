@@ -23,6 +23,14 @@ const ContextualMusic = () => {
   const [idGender, setIdGender] = useState([]);
   const [idWeather, setIdWeather] = useState("");
 
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   const getActivity = async () => {
     try {
       const result = await allActivity();
@@ -89,7 +97,7 @@ const ContextualMusic = () => {
     setGender(newState);
   };
 
-  const token = localStorage.getItem("token");
+
 
   const handleActivity = (e) => {
     setIdActivity(e.target.value);

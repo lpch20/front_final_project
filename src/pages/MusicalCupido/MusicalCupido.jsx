@@ -18,6 +18,15 @@ function MusicalCupido() {
 
   const touchStartX = useRef(null);
 
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
+
   const getAllSongs = async () => {
     try {
       const allSongsDb = await allSongs();
@@ -101,7 +110,7 @@ function MusicalCupido() {
     musicSelected();
   };
 
-  const token = localStorage.getItem("token");
+
 
   console.log("Liked Song:", dataToSend);
 
