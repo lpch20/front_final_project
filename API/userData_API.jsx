@@ -26,7 +26,7 @@ export const usernameVerify = async (usernameValue) => {
   }
 };
 
-export const usersData = async (token) => {
+export const getUserPlaylists = async (token) => {
   let url = `/dataUser`;
   // ?token=${token}`;
   try {
