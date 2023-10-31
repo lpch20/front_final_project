@@ -70,7 +70,7 @@
   text-align: center;
   background-color: transparent;
   font-size: 16px;
-
+  
   border: 2px solid  #26262e;
   padding: 8px;
 }
@@ -88,10 +88,14 @@
 }
 
 .genderBox input:checked + span {
-  background: orange;
+  background: #26262E;
+  color: white;
   
 }
 
+.colorType {
+  color: black;
+}
 .containGender{
   display: flex;
   align-items: center;
@@ -118,4 +122,12 @@
 
 .buttonGender{
   margin-top: auto;
+}
+.textHeader{
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
 }

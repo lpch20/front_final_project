@@ -139,7 +139,7 @@ const ContextualMusic = () => {
     <>
       <main className="mainContainer">
         <div className="childContainer">
-          <Header title="Musica Contextual"></Header>
+          <Header className='textHeader' title="Musica Contextual"></Header>
 
           <form onSubmit={handleSubmit} className="formLayout">
             <h1>¿Cúal es la ocasión?</h1>
@@ -152,7 +152,7 @@ const ContextualMusic = () => {
                 Actividad
               </option>
               {activity.map((n) => (
-                <option key={n.id_activity} value={n.id_activity}>
+                <option  className="colorType" key={n.id_activity} value={n.id_activity}>
                   {n.type}
                 </option>
               ))}
@@ -164,9 +164,9 @@ const ContextualMusic = () => {
             <select onChange={handleMood} id="opciones" className="inputMain">
               <option value="" disabled selected hidden>
                 Estado de Animo
-              </option>
+              </option >
               {mood.map((n) => (
-                <option key={n.id_mood} value={n.id_mood}>
+                <option  className="colorType" key={n.id_mood} value={n.id_mood}>
                   {n.type}
                 </option>
               ))}
@@ -182,7 +182,7 @@ const ContextualMusic = () => {
                 Clima
               </option>
               {weather.map((n) => (
-                <option key={n.id_weather} value={n.id_weather}>
+                <option   className="colorType" key={n.id_weather} value={n.id_weather}>
                   {n.type}
                 </option>
               ))}
