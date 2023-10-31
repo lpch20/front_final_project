@@ -39,7 +39,7 @@ const ContextualMusic = () => {
 
   const getActivity = async () => {
     try {
-      const result = await allActivity();
+      const result = await allActivity(token);
       setActivity(result);
     } catch (error) {
       Swal.fire({
@@ -57,7 +57,7 @@ const ContextualMusic = () => {
   };
   const getMood = async () => {
     try {
-      const result = await allMood();
+      const result = await allMood(token);
       setMood(result);
     } catch (error) {
       Swal.fire({
@@ -75,7 +75,7 @@ const ContextualMusic = () => {
   };
   const getWeather = async () => {
     try {
-      const result = await allWeather();
+      const result = await allWeather(token);
       setWeather(result);
     } catch (error) {
       Swal.fire({
@@ -93,7 +93,7 @@ const ContextualMusic = () => {
   };
   const getGender = async () => {
     try {
-      const result = await allGender();
+      const result = await allGender(token);
       setGender(
         result.map((gender) => {
           return { ...gender, status: false };

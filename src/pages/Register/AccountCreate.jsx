@@ -21,6 +21,8 @@ function AccountCreate() {
   const [checkError, setCheckError] = useState(false);
   const [checked, setChecked] = useState(false);
 
+  localStorage.clear();
+
   const handleUser = async (e) => {
     const value = e.target.value;
     setUser(value);

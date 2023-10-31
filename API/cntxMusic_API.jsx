@@ -1,39 +1,48 @@
 import api from "./rule_API";
 
-export const allActivity = async () => {
+export const allActivity = async (token) => {
   let url = "/activity";
   try {
-    const result = await api.get(url);
+    const result = await api.get(url, {
+      headers: { Authorization: token },
+    });
     console.log(result);
     return result.data;
   } catch (error) {
     throw error.response.data.error;
   }
 };
-export const allMood = async () => {
+export const allMood = async (token) => {
   let url = "/mood";
   try {
-    const result = await api.get(url);
+    const result = await api.get(url, {
+      headers: { Authorization: token },
+    });
     console.log(result);
     return result.data;
   } catch (error) {
     throw error.response.data.error;
   }
 };
-export const allWeather = async () => {
+export const allWeather = async (token) => {
   let url = "/weather";
   try {
-    const result = await api.get(url);
+    const result = await api.get(url, {
+      headers: { Authorization: token },
+    });
     console.log(result);
     return result.data;
   } catch (error) {
     throw error.response.data.error;
   }
 };
-export const allGender = async () => {
+
+export const allGender = async (token) => {
   let url = "/gender";
   try {
-    const result = await api.get(url);
+    const result = await api.get(url, {
+      headers: { Authorization: token },
+    });
     console.log(result);
     return result.data;
   } catch (error) {
@@ -48,8 +57,7 @@ export const contextualMusic = async (dataToSend, token) => {
     return response.data;
   } catch (error) {
     throw (
-      error.response.data.error ||
-      "Mail incorrecto, porfavor intente nuevamente"
+      error.response.data.error 
     );
   }
 };

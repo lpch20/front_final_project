@@ -4,6 +4,7 @@ import CustomBtn from "../../components/Buttons/CustomBtn";
 import { Link } from 'react-router-dom';
 
 export const ChekIn = () => {
+  localStorage.clear();
   return (
     <>
     <main className="container" >

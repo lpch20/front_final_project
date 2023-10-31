@@ -7,8 +7,7 @@ export const usernameVerify = async (usernameValue) => {
     return response.data;
   } catch (error) {
     throw (
-      error.response.data.error ||
-      "Mail incorrecto, porfavor intente nuevamente"
+      error.response.data.error
     );
   }
 };
@@ -20,8 +19,7 @@ export const emailVerify = async (emailValue) => {
     return response.data;
   } catch (error) {
     throw (
-      error.response.data.error ||
-      "Mail incorrecto, porfavor intente nuevamente"
+      error.response.data.error
     );
   }
 };
@@ -34,8 +32,7 @@ export const passwordVerify = async (user) => {
     return response.data;
   } catch (error) {
     throw (
-      error.response.data.error ||
-      "Mail incorrecto, porfavor intente nuevamente"
+      error.response.data.error
     );
   }
 };
