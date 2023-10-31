@@ -98,8 +98,8 @@ export const PlaylistCupido= () => {
                     className="infoMusic"
                     style={{ flexDirection: "column", textAlign: "center" }}
                   >
-                    <p key={data.id}>{data.name}</p>
-                    <p key={data.id}>{data.artist_name}</p>
+                    <p className="songName" key={data.id}>{data.name}</p>
+                    <p className="artistName" key={data.id}>{data.artist_name}</p>
                   </div>
 
                   <img

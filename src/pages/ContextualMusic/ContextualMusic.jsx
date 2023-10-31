@@ -22,7 +22,6 @@ const ContextualMusic = () => {
   const [idMood, setIdMood] = useState("");
   const [idGender, setIdGender] = useState([]);
   const [idWeather, setIdWeather] = useState("");
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {

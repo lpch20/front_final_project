@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 export const PlaylistContextual = () => {
     const [playlist, setPlaylist] = useState([]);
     const [totalDurationMusic, setTotalDurationMusic] = useState(null);
-  
     const getPlaylist = async () => {
       try {
         const createPlaylist = await actualPlaylist();
@@ -28,7 +27,6 @@ export const PlaylistContextual = () => {
         });
       }
     };
-  
     const mapPlaylist = (playlist) => {
       let totalDuration = 0;
   
@@ -41,21 +39,19 @@ export const PlaylistContextual = () => {
   
       const fullMinutes = hours;
       const fullHours = fullMinutes / 60;
-  
+
       setTotalDurationMusic(
         Math.floor(fullHours) + "h " + (minutes < 10 ? "0" : "") + minutes + "m"
       );
     };
-  
     useEffect(() => {
       getPlaylist();
     }, []);
-
   return (
     <>
       <div className="mainContainer">
         <div className="flexDiv">
-        <Header title="Generada del Cupido Musical"  />
+        <Header   title="Generada del Cupido Musical"  />
         <img className="iconHeaderRight" src="/icon/icon-right-placeholder.svg" alt="" /></div>
         <p className="headerBox"> Playlist Generada</p>
         <Navegationbar
@@ -70,7 +66,6 @@ export const PlaylistContextual = () => {
           <img className="coverRaw" src="/public/8.png" alt="" />
           <img className="coverStyles" src="/public/2.png" alt="" />
         </div>
-
         <div className="logoDiv">
           <img className="logoSmall" src="/public/logo-small.svg" alt="" />
           <img className="verifiedStyle" src="/public/verified.svg" alt="" />
@@ -95,15 +90,13 @@ export const PlaylistContextual = () => {
                     src={`/${data.artist_id}.png`}
                     alt=""
                   />
-
                   <div
                     className="infoMusic"
                     style={{ flexDirection: "column", textAlign: "center" }}
                   >
-                    <p key={data.id}>{data.name}</p>
-                    <p key={data.id}>{data.artist_name}</p>
+                    <p className="songName" key={data.id}>{data.name}</p>
+                    <p className="artistName" key={data.id}>{data.artist_name}</p>
                   </div>
-
                   <img
                     className="iconRight"
                     src="/icon/icon-right-placeholder.svg"
@@ -118,5 +111,4 @@ export const PlaylistContextual = () => {
     </>
   );
 };
-
 export default PlaylistContextual;
