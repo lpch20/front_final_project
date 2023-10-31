@@ -23,9 +23,8 @@ function AccountCreate() {
 
   const handleUser = async (e) => {
     const value = e.target.value;
-
     setUser(value);
-    if (value.trim().length === 0 || !isValidUser(value)) {
+    if (value.trim().length === 0) {
       setUserError(true);
     } else {
       setUserError(false);
@@ -37,10 +36,20 @@ function AccountCreate() {
     console.log("Verifying user");
     try {
       await usernameVerify(validUser);
-
       setUserInvalid(false);
       setUserMessage("El nombre de usuario está disponible.");
     } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
       setUserInvalid(true);
       setUserMessage("El usuario ya existe.");
     }
@@ -67,12 +76,9 @@ function AccountCreate() {
     }
   };
 
-  const isValidUser = (user) => {
-    return /^.{8,}$/.test(user);
-  };
-
+ 
   const isValidPassword = (password) => {
-    return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
+    return /^(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/.test(password);
   };
 
   const validationButton = () => {
@@ -101,7 +107,7 @@ function AccountCreate() {
     const dataToSend = { username: user, password: password, email: email };
 
     if (
-      (userInvalid ||
+      (
         userError ||
         email.trim() === "" ||
         passwordError ||
@@ -152,14 +158,14 @@ function AccountCreate() {
                     value={user}
                     onChange={handleUser}
                     onBlur={verifyUser}
-                    warning="Deberás poder confirmarlo luego."
+                    warning="Deberá contener al menos 8 caracteres."
                   ></InputUser>
                 ) : (
                   <InputUser
                     value={user}
                     onChange={handleUser}
                     onBlur={verifyUser}
-                    warning="Deberás poder confirmarlo luego."
+                    warning="Deberá contener al menos 8 caracteres."
                   ></InputUser>
                 )}
               </div>
@@ -173,14 +179,15 @@ function AccountCreate() {
               )}
             </div>
             <div>
-              <label className={` normalLabel ${passwordError ? "errorLabel" : "normalLabel"}`}>
-                Contraseña
-              </label>
+            <label style={{ color: passwordError ? "red" : "black" }}>
+              Contraseña
+            </label>
+
               <div className="inputMail">
                 <InputPassword
                   value={password}
                   onChange={handlePassword}
-                  warning="Deberá contener al menos 8 caracteres."
+                  warning="Deberá contener al menos 8 caracteres, una mayuscula, un numero y un caracter."
                 ></InputPassword>
               </div>
             </div>

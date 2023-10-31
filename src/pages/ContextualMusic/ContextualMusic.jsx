@@ -11,6 +11,7 @@ import {
   allWeather,
   contextualMusic,
 } from "../../../API/cntxMusic_API";
+import Swal from "sweetalert2";
 
 const ContextualMusic = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const ContextualMusic = () => {
   const [idGender, setIdGender] = useState([]);
   const [idWeather, setIdWeather] = useState("");
   const token = localStorage.getItem("token");
+  const [totalContainerHidden, setTotalContainerHidden] = useState(true)
 
   useEffect(() => {
     if (!token) {
@@ -30,12 +32,27 @@ const ContextualMusic = () => {
     }
   }, []);
 
+  const handleContainer = () => {
+    setTotalContainerHidden(!totalContainerHidden);
+  };
+
+
   const getActivity = async () => {
     try {
       const result = await allActivity();
       setActivity(result);
     } catch (error) {
-      error("Error al obtener las actividades");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
   const getMood = async () => {
@@ -43,7 +60,17 @@ const ContextualMusic = () => {
       const result = await allMood();
       setMood(result);
     } catch (error) {
-      error("Error al obtener los estados de animo");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
   const getWeather = async () => {
@@ -51,7 +78,17 @@ const ContextualMusic = () => {
       const result = await allWeather();
       setWeather(result);
     } catch (error) {
-      error("Error al obtener clima");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
   const getGender = async () => {
@@ -63,7 +100,17 @@ const ContextualMusic = () => {
         })
       );
     } catch (error) {
-      error("Error al obtener los generos");
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
   };
 
@@ -128,7 +175,17 @@ const ContextualMusic = () => {
       await contextualMusic(dataToSend, token);
       navigate("/Playlistcontextual")
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: error,
+        icon: "error",
+        confirmButtonColor: "orange",
+        confirmButtonText: "Aceptar",
+        customClass: {
+          title: "font-small",
+          text: "font-small",
+        },
+      });
     }
     
   };
@@ -145,7 +202,38 @@ const ContextualMusic = () => {
   return (
     <>
       <main className="mainContainer">
-        <div className="childContainer">
+      <div
+        style={{
+          display: totalContainerHidden ? "flex" : "none",
+        }}
+        className="popUp"
+      >
+        <div className="titlePopUp">
+          <h3>Música Contextual</h3>
+        </div>
+
+        <div className="imgPopUp">
+          <img src="/contextual-pop-up.svg" alt="" />
+        </div>
+
+        <div className="textPopUp">
+          <p>Llena cuantos campos quieras y crearemos una playlist en base a tus respuestas.</p>
+        </div>
+
+        <div className="containerButtonPopUp">
+          <button onClick={handleContainer} className="buttonOkPopUp">Entendido</button>
+        </div>
+
+        <div className="containerA">
+          <a onClick={handleContainer} className="aNoPopUp">No volver a Mostrar</a>
+        </div>
+
+      </div>
+
+        <div className="childContainer" 
+        style={{
+          display: totalContainerHidden ? "none" : "flex",
+        }}>
           <Header className='textHeader' title="Musica Contextual"></Header>
 
           <form onSubmit={handleSubmit} className="formLayout">
