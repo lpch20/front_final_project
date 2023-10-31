@@ -5,9 +5,16 @@
   justify-content: center;
   padding: 20px;
 }
-.mainContainer h3 {
+.mainContainer p {
   text-align: center;
+  font-family: Rubik;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; 
+  letter-spacing: 0.5px;
 }
+
 
 .coverStyles {
   width: 112px;
@@ -118,7 +125,19 @@ height: 48px;
   max-width: 320px;
 }
 
+.iconHeaderRight{
+  width: 24px;
+  height: 24px;
+ margin-top: 23px ;
+  
+}
 .iconRight{
   width: 24px;
   height: 24px;
+  
+}
+.flexDiv{
+  display: flex;
+  align-items: center;
+  align-content: center;
 }

@@ -10,7 +10,7 @@ function Header(props) {
             <img className="arrowImg" src="/icon/Vector.svg" alt="" />
           </Link>
 
-          <h3>{props.title}</h3>
+          <h3>{props.title}   </h3>
         </div>
       </div>
     </div>

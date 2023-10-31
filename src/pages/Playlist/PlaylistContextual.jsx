@@ -54,8 +54,10 @@ export const PlaylistContextual = () => {
   return (
     <>
       <div className="mainContainer">
-        <h3 className="">Generada Del Cupido Musical</h3>
-        <Header title="Playlist Generada" />
+        <div className="flexDiv">
+        <Header title="Generada del Cupido Musical"  />
+        <img className="iconHeaderRight" src="/icon/icon-right-placeholder.svg" alt="" /></div>
+        <p className="headerBox"> Playlist Generada</p>
         <Navegationbar
           icon1="/style=fill, state=active.svg"
           icon2="/style=outline, state=inactive (1).svg"
