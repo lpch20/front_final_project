@@ -18,6 +18,10 @@
   position: relative;
 }
 
+.mainContainer h3{
+  text-align: center;
+}
+
 .cross,
 .like {
   height: auto;
