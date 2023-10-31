@@ -28,7 +28,7 @@ export const usernameVerify = async (usernameValue) => {
 
 export const getUserPlaylists = async (token) => {
   let url = `/dataUser`;
-  // ?token=${token}`;
+
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -39,15 +39,4 @@ export const getUserPlaylists = async (token) => {
     throw error.response.data.error;
   }
 };
-// export const usersName = async (token) => {
-//   let url = `/userName`;
-//   try {
-//     const result1 = await api.get(url, {
-//       headers: { Authorization: token },
-//     });
-//     console.log(result1);
-//     return result1.data;
-//   } catch (error) {
-//     throw error.response.data.error;
-//   }
-// };
+

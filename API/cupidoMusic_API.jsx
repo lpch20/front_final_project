@@ -9,8 +9,7 @@ export const cupidoMusic = async (dataToSend, token) => {
     return response.data;
   } catch (error) {
     throw (
-      error.response.data.error ||
-      "Mail incorrecto, porfavor intente nuevamente"
+      error.response.data.error 
     );
   }
 };

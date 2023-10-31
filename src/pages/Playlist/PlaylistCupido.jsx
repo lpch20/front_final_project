@@ -4,14 +4,22 @@ import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Playlist.css";
 import { actualPlaylist } from "../../../API/rule_PLAYLIST";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const PlaylistCupido= () => {
+    const navigate = useNavigate()
     const [playlist, setPlaylist] = useState([]);
     const [totalDurationMusic, setTotalDurationMusic] = useState(null);
   
+    const token = localStorage.getItem('token')
+
+    if(!token){
+      navigate('/')
+    }
+
     const getPlaylist = async () => {
       try {
-        const createPlaylist = await actualPlaylist();
+        const createPlaylist = await actualPlaylist(token);
         setPlaylist(createPlaylist);
         mapPlaylist(createPlaylist);
       } catch (error) {

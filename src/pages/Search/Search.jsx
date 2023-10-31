@@ -57,7 +57,7 @@ function Search() {
 
   const getTopTwenty = async () => {
     try {
-      const result = await topTwenty();
+      const result = await topTwenty(token);
       setTopSongs(result);
     } catch (error) {
       Swal.fire({
@@ -75,7 +75,7 @@ function Search() {
   };
   const getAllSongs = async () => {
     try {
-      const allSongsDb = await allSongs();
+      const allSongsDb = await allSongs(token);
       setSongs(allSongsDb);
     } catch (error) {
       Swal.fire({

@@ -13,6 +13,8 @@ function Register() {
   const [errorEmail, setErrorEmail] = useState(false);
   const [intoInput, setIntoInput] = useState(false);
 
+  localStorage.clear();
+
   const handleFocus = () => {
     setIntoInput(true); 
   };

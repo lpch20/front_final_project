@@ -35,7 +35,7 @@ function MusicalCupido() {
 
   const getAllSongs = async () => {
     try {
-      const allSongsDb = await allSongs();
+      const allSongsDb = await allSongs(token);
       setSongs(allSongsDb);
     } catch (error) {
       Swal.fire({
