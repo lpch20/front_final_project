@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
 export const usernameVerify = async (usernameValue) => {
-  let url =`/verifyDataUser?username=${usernameValue}`;
+  let url = `/verifyDataUser?username=${usernameValue}`;
   try {
     const response = await api.get(url);
     return response.data;
@@ -27,9 +27,8 @@ export const emailVerify = async (emailValue) => {
 };
 
 export const passwordVerify = async (user) => {
-    
-  let url =`/verifyDataPassword`;
-  
+  let url = `/verifyDataPassword`;
+
   try {
     const response = await api.post(url, user);
     return response.data;
@@ -40,5 +39,3 @@ export const passwordVerify = async (user) => {
     );
   }
 };
-
-

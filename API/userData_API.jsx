@@ -26,13 +26,28 @@ export const usernameVerify = async (usernameValue) => {
   }
 };
 
-export const usersData = async () => {
-  let url = "/dataUser";
+export const usersData = async (token) => {
+  let url = `/dataUser`;
+  // ?token=${token}`;
   try {
-    const result = await api.get(url);
+    const result = await api.get(url, {
+      headers: { Authorization: token },
+    });
     console.log(result);
     return result.data;
   } catch (error) {
     throw error.response.data.error;
   }
 };
+// export const usersName = async (token) => {
+//   let url = `/userName`;
+//   try {
+//     const result1 = await api.get(url, {
+//       headers: { Authorization: token },
+//     });
+//     console.log(result1);
+//     return result1.data;
+//   } catch (error) {
+//     throw error.response.data.error;
+//   }
+// };
