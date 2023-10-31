@@ -97,6 +97,8 @@ function MusicalCupido() {
     }
   };
 
+ 
+
   const musicSelected = () => {
     const currentSongId = songs[currentSongIndex].artist_id;
 
@@ -160,6 +162,7 @@ function MusicalCupido() {
     }
   };
 
+  
   return (
     <div className="containerCupido">
 
