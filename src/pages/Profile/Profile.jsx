@@ -1,50 +1,36 @@
 import React, { useState, useEffect } from "react";
 import Navegationbar from "../../components/NavigationBar/Navegationbar";
 import "./Profile.css";
-import {
-  usersData,
-  // , usersName
-} from "../../../API/userData_API";
+import { getUserPlaylists } from "../../../API/userData_API";
 import HeaderProfile from "./components/HeaderProfile";
 import { Link } from "react-router-dom";
 
 function Profile() {
-  const [users, setUsers] = useState([]);
-  // const [usersName, setUsersName] = useState([]);
+  const [users, setUsers] = useState({ username: "", playlistNames: [] });
+
   const token = localStorage.getItem("token");
 
   const getUsersData = async () => {
     try {
-      const UsersDb = await usersData(token);
-      setUsers([UsersDb]);
+      const userData = await getUserPlaylists(token);
+      setUsers(userData);
     } catch (error) {
-      error("Error al obtener todas los usuarios.");
+      console.error("Error al obtener los datos del usuario.", error);
     }
   };
-  // const getUsersName = async () => {
-  //   try {
-  //     const UsersName = await usersName(token);
-  //     setUsersName(UsersName);
-  //   } catch (error) {
-  //     error("Error al obtener todas los usuarios.");
-  //   }
-  // };
 
   useEffect(() => {
     getUsersData();
-    // getUsersName();
-    console.log(users);
   }, []);
 
   return (
     <div className="profileContainer">
       <HeaderProfile
         profileImg="/1.png"
-        // profileName={usersName.map((data) => data.username)}
-        profileUsername="Mara Pérez 🦋"
+        profileUsername={users.username} 
       />
       <div className="dividerProfile">
-        <label htmlFor="">Mis Playlist</label>
+        <label className="labelProfile">Mis Playlist</label>
         <hr />
         <Link to="/newPlaylist">
           <button className="dividerNewPlaylistDivider">Crear Playlist</button>
@@ -52,9 +38,10 @@ function Profile() {
       </div>
 
       <div className="playlistProfileContainer">
-        {users.map((user, index) => (
-          <div key={index}>
-            <p>{user[0].name}</p>
+        {users.playlistNames.map((playlistName, index) => (
+          <div key={index} className="coverSection">
+            <p>{playlistName}</p>
+            <img className="coverStyles" src="/public/1.png" alt="" />
           </div>
         ))}
       </div>
