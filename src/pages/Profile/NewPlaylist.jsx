@@ -9,6 +9,16 @@ function NewPlaylist() {
     setPlaylistName(inputValue);
   };
 
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
+
   return (
     <div className="newPlContainer">
       <div className="settingsTitle">

@@ -11,7 +11,7 @@
 }
 
 .containerButton{
-    margin-top: 180px;
+    margin-top: 380px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,4 +47,8 @@
   font-weight: 500;
   color: white;
   border: none;
+}
+
+.loginUser{
+  margin-top: 40px;
 }
