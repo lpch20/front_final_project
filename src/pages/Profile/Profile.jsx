@@ -10,13 +10,11 @@ function Profile() {
 
   const token = localStorage.getItem("token");
 
-
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
   }, []);
-
 
   const getUsersData = async () => {
     try {
@@ -33,10 +31,7 @@ function Profile() {
 
   return (
     <div className="profileContainer">
-      <HeaderProfile
-        profileImg="/1.png"
-        profileUsername={users.username} 
-      />
+      <HeaderProfile profileImg="/1.png" profileUsername={users.username} />
       <div className="dividerProfile">
         <label className="labelProfile">Mis Playlist</label>
         <hr />

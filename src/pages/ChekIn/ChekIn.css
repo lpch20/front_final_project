@@ -68,26 +68,20 @@
 
 .flexContainer {
   min-width: 368px;
-  padding: 30px;
   text-align: center;
   margin: auto;
 }
 
 .logInSection {
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .logIn {
-  position: relative;
-  /* bottom: 0; */
-
-  width: 288px;
   border: none;
   background-color: transparent;
-  margin-top: 32px;
+  margin-top: 92px;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

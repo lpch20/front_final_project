@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./NewPlaylist.css";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,6 @@ function NewPlaylist() {
     setPlaylistName(inputValue);
   };
 
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -17,7 +16,6 @@ function NewPlaylist() {
       navigate("/login");
     }
   }, []);
-
 
   return (
     <div className="newPlContainer">
