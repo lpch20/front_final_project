@@ -1,22 +1,21 @@
 .containerButton p {
   color: var(--medios-tonos-gris-5, #26262e);
   text-align: center;
-  /* Headings/Heading 5 - 16px/Medium */
   font-family: Rubik;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   letter-spacing: 0.5px;
 }
 
-.containerButton{
-    margin-top: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.containerButton {
+  margin-top: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .btnMain4 {
@@ -49,6 +48,6 @@
   border: none;
 }
 
-.loginUser{
+.loginUser {
   margin-top: 40px;
 }

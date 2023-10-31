@@ -7,9 +7,6 @@
   background-color: #26262e;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  /*   display: flex;
-  flex-direction: row;
-  align-items: center; */
 }
 
 .logoImage {
@@ -29,9 +26,6 @@
       rgba(252, 154, 42, 0.9) 100%
     ),
     url("/public/Gif_Auden.gif");
-
-  /* width: 368px;
-  height: 792px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,16 +54,13 @@
 .lettersMid {
   width: 196px;
   height: 31px;
-
   color: var(--medios-tonos-gris-5, #26262e);
-
   text-align: center;
   font-size: 26px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.794px;
-
   width: 100%;
   justify-self: stretch;
   margin-top: 23.67px;
@@ -83,8 +74,7 @@
 }
 
 .logInSection {
-  margin-bottom: 200px;
-
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,4 +96,3 @@
 .lettersMid {
   margin-bottom: 15%;
 }
-
