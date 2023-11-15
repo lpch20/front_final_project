@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
 export const allActivity = async (token) => {
-  let url = "/activity";
+  let url = "https://back-senpai-project.vercel.app/api/activity";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -13,7 +13,7 @@ export const allActivity = async (token) => {
   }
 };
 export const allMood = async (token) => {
-  let url = "/mood";
+  let url = "https://back-senpai-project.vercel.app/api/mood";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -25,7 +25,7 @@ export const allMood = async (token) => {
   }
 };
 export const allWeather = async (token) => {
-  let url = "/weather";
+  let url = "https://back-senpai-project.vercel.app/api/weather";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -38,7 +38,7 @@ export const allWeather = async (token) => {
 };
 
 export const allGender = async (token) => {
-  let url = "/gender";
+  let url = "https://back-senpai-project.vercel.app/api/gender";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -51,7 +51,7 @@ export const allGender = async (token) => {
 };
 
 export const contextualMusic = async (dataToSend, token) => {
-  let url = "/contextualPlaylist";
+  let url = "https://back-senpai-project.vercel.app/api/contextualPlaylist";
   try {
     const response = await api.post(url, dataToSend, {headers:{Authorization: token}});
     return response.data;
