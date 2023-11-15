@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
 export const allSongs = async (token) => {
-  let url = "https://back-senpai-project.vercel.app/api/songs";
+  let url = "/songs";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },
@@ -13,7 +13,7 @@ export const allSongs = async (token) => {
   }
 };
 export const topTwenty = async (token) => {
-  let url = "https://back-senpai-project.vercel.app/api/top20";
+  let url = "/top20";
   try {
     const result = await api.get(url, {
       headers: { Authorization: token },

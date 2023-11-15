@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
 export const usernameVerify = async (usernameValue) => {
-  let url = `https://back-senpai-project.vercel.app/api/verifyDataUser?username=${usernameValue}`;
+  let url = `/verifyDataUser?username=${usernameValue}`;
   try {
     const response = await api.get(url);
     return response.data;
@@ -13,7 +13,7 @@ export const usernameVerify = async (usernameValue) => {
 };
 
 export const emailVerify = async (emailValue) => {
-  let url = `https://back-senpai-project.vercel.app/api/verifyDataMail?email=${emailValue}`;
+  let url = `/verifyDataMail?email=${emailValue}`;
   try {
     const response = await api.get(url);
     return response.data;
@@ -25,7 +25,7 @@ export const emailVerify = async (emailValue) => {
 };
 
 export const passwordVerify = async (user) => {
-  let url = `https://back-senpai-project.vercel.app/api/verifyDataPassword`;
+  let url = `/verifyDataPassword`;
 
   try {
     const response = await api.post(url, user);

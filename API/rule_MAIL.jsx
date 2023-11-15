@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
 export const emailAdd = async (emailValue) => {
-  let url = `https://back-senpai-project.vercel.app/api/verifymail?email=${emailValue}`;
+  let url = `/verifymail?email=${emailValue}`;
   try {
     const response = await api.get(url);
     return response.data;
